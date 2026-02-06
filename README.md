@@ -89,9 +89,8 @@ npm run dev
 
 ### Homepage Sections
 1. **Hub Cards** - Projects, Learn, Resources, Community
-2. **Social Proof** - Community member counter with visual avatars
-3. **Featured Resources** - Curated prompts and templates
-4. **Interactive Elements** - Particle effects, animations, engaging UI
+2. **Featured Resources** - Curated prompts and templates
+3. **Interactive Elements** - Particle effects, animations, engaging UI
 
 ### Responsive Design
 - Mobile-first approach
