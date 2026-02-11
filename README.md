@@ -11,7 +11,6 @@ Thecrash is a modern, Notion-inspired personal workspace platform designed for c
 - Floating card animations for engaging UI/UX
 - Quick navigation to all ecosystem sections
 - Social proof counter showing community growth
-- Terminal Snake game for fun breaks
 
 ### 💼 Projects Showcase
 - **Thecrash** - Your personal workspace ecosystem
@@ -112,7 +111,7 @@ Thecrash follows a **Notion-inspired black and white aesthetic** with:
 
 ## Author
 
-**Pyae Sone Phyo (Sone)**
+**Pyae Sone Phyo (Thecrash)**
 - Age: 20
 - Location: Myanmar
 - Role: Builder, Creator, Entrepreneur

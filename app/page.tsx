@@ -100,7 +100,7 @@ const hubCards = [
     color: "from-amber-500/20 to-yellow-500/20",
   },
   {
-    title: "Learn",
+    title: "Meta",
     description: "Web Dev, AI & Automation",
     detail: "Tutorials in Myanmar language",
     icon: BookOpenIcon,

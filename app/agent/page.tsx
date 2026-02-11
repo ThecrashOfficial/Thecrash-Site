@@ -101,39 +101,39 @@ export default function AgentPage() {
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      <main className="pt-24 pb-6 px-4 sm:px-6 lg:px-8">
+      <main className="pt-16 sm:pt-20 lg:pt-24 pb-4 sm:pb-6 px-3 sm:px-4 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-8 sm:mb-12 text-center lg:text-left animate-slide-up">
-            <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-black to-gray-800 flex items-center justify-center">
-                <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+          <div className="mb-6 sm:mb-8 lg:mb-12 text-center lg:text-left animate-slide-up">
+            <div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-black to-gray-800 flex items-center justify-center">
+                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">AI Agent</h1>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground tracking-tight">AI Agent</h1>
             </div>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto lg:mx-0">
-              Chat with specialized AI mentors powered by Google Gemini for guidance on development, design, and career
-              growth.
+            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl sm:max-w-3xl mx-auto lg:mx-0">
+              Chat with specialized AI mentors powered by Google Gemini for guidance on development, design, and career growth.
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
+            {/* Mobile mentor selector */}
             <div className="lg:hidden">
               <Button
                 onClick={() => setShowMentors(!showMentors)}
                 variant="outline"
-                className="w-full justify-between h-auto py-4 px-5 rounded-2xl border-2 hover:border-primary transition-all"
+                className="w-full justify-between h-auto py-3 sm:py-4 px-4 sm:px-5 rounded-2xl border-2 hover:border-primary transition-all text-sm sm:text-base"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Bot className="w-5 h-5 text-primary" />
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                   </div>
-                  <div className="text-left">
-                    <p className="font-semibold text-sm">{selectedMentor.name}</p>
-                    <p className="text-xs text-muted-foreground">{selectedMentor.specialty}</p>
+                  <div className="text-left min-w-0">
+                    <p className="font-semibold text-xs sm:text-sm truncate">{selectedMentor.name}</p>
+                    <p className="text-xs text-muted-foreground truncate">{selectedMentor.specialty}</p>
                   </div>
                 </div>
                 <svg
-                  className={`w-5 h-5 transition-transform ${showMentors ? "rotate-180" : ""}`}
+                  className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform flex-shrink-0 ml-2`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -143,11 +143,11 @@ export default function AgentPage() {
               </Button>
 
               {showMentors && (
-                <div className="mt-3 space-y-2 animate-slide-up">
+                <div className="mt-2 sm:mt-3 space-y-2 animate-slide-up max-h-96 overflow-y-auto">
                   {mentors.map((mentor) => (
                     <Card
                       key={mentor.name}
-                      className={`p-4 cursor-pointer transition-all ${
+                      className={`p-3 sm:p-4 cursor-pointer transition-all text-sm ${
                         selectedMentor.name === mentor.name
                           ? "border-primary bg-accent border-2"
                           : "border-border hover:border-primary/50"
@@ -157,14 +157,14 @@ export default function AgentPage() {
                         setShowMentors(false)
                       }}
                     >
-                      <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <Bot className="w-5 h-5 text-primary" />
+                      <div className="flex items-start gap-2 sm:gap-3">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-semibold text-sm text-card-foreground mb-1">{mentor.name}</h4>
-                          <p className="text-xs text-muted-foreground leading-relaxed">{mentor.description}</p>
-                          <Badge variant="secondary" className="mt-2 text-xs">
+                          <h4 className="font-semibold text-xs sm:text-sm text-card-foreground mb-0.5 truncate">{mentor.name}</h4>
+                          <p className="text-xs text-muted-foreground leading-tight line-clamp-2">{mentor.description}</p>
+                          <Badge variant="secondary" className="mt-1.5 text-xs">
                             {mentor.specialty}
                           </Badge>
                         </div>
@@ -175,14 +175,15 @@ export default function AgentPage() {
               )}
             </div>
 
-            <div className="grid lg:grid-cols-12 gap-4 lg:gap-6">
-              <div className="hidden lg:block lg:col-span-3 space-y-3">
-                <h3 className="text-sm font-semibold text-foreground mb-4 px-1">Select Mentor</h3>
-                <div className="space-y-2">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-6">
+              {/* Desktop mentor sidebar */}
+              <div className="hidden lg:block lg:col-span-3 space-y-2 lg:space-y-3">
+                <h3 className="text-xs sm:text-sm font-semibold text-foreground mb-2 lg:mb-3 px-1">Select Mentor</h3>
+                <div className="space-y-2 max-h-[calc(100vh-400px)] overflow-y-auto pr-2">
                   {mentors.map((mentor, index) => (
                     <Card
                       key={mentor.name}
-                      className={`p-4 cursor-pointer transition-all duration-300 hover:scale-[1.02] ${
+                      className={`p-3 lg:p-4 cursor-pointer transition-all duration-300 hover:scale-[1.02] text-sm ${
                         selectedMentor.name === mentor.name
                           ? "border-primary bg-accent border-2 shadow-lg"
                           : "border-border hover:border-primary/50 hover:shadow-md"
@@ -190,16 +191,16 @@ export default function AgentPage() {
                       onClick={() => setSelectedMentor(mentor)}
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
-                      <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <Bot className="w-5 h-5 text-primary" />
+                      <div className="flex items-start gap-2 lg:gap-3">
+                        <div className="w-8 lg:w-10 h-8 lg:h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <Bot className="w-4 lg:w-5 h-4 lg:h-5 text-primary" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-semibold text-sm text-card-foreground mb-1">{mentor.name}</h4>
-                          <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                          <h4 className="font-semibold text-xs lg:text-sm text-card-foreground mb-0.5 truncate">{mentor.name}</h4>
+                          <p className="text-xs text-muted-foreground leading-tight line-clamp-2">
                             {mentor.description}
                           </p>
-                          <Badge variant="secondary" className="mt-2 text-xs">
+                          <Badge variant="secondary" className="mt-1.5 text-xs">
                             {mentor.specialty}
                           </Badge>
                         </div>
@@ -209,15 +210,17 @@ export default function AgentPage() {
                 </div>
               </div>
 
+              {/* Chat container */}
               <div className="lg:col-span-9">
-                <Card className="flex flex-col border-2 border-border bg-card shadow-xl rounded-3xl overflow-hidden h-[calc(100vh-280px)] sm:h-[calc(100vh-240px)] lg:h-[700px]">
-                  <div className="p-4 sm:p-6 border-b-2 border-border bg-gradient-to-r from-muted/50 to-transparent">
-                    <div className="flex items-center gap-3 sm:gap-4">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg">
-                        <Bot className="w-6 h-6 sm:w-7 sm:h-7 text-primary-foreground" />
+                <Card className="flex flex-col border-2 border-border bg-card shadow-xl rounded-2xl sm:rounded-3xl overflow-hidden h-[calc(100vh-240px)] sm:h-[calc(100vh-200px)] lg:h-[calc(100vh-280px)]">
+                  {/* Chat header */}
+                  <div className="p-3 sm:p-4 lg:p-6 border-b-2 border-border bg-gradient-to-r from-muted/50 to-transparent flex-shrink-0">
+                    <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg flex-shrink-0">
+                        <Bot className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-primary-foreground" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-bold text-base sm:text-lg text-card-foreground truncate">
+                        <h3 className="font-bold text-sm sm:text-base lg:text-lg text-card-foreground truncate">
                           {selectedMentor.name}
                         </h3>
                         <p className="text-xs sm:text-sm text-muted-foreground truncate">
@@ -227,7 +230,8 @@ export default function AgentPage() {
                     </div>
                   </div>
 
-                  <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 sm:space-y-6 bg-gradient-to-b from-transparent to-muted/20">
+                  {/* Messages area */}
+                  <div className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6 space-y-3 sm:space-y-4 lg:space-y-6 bg-gradient-to-b from-transparent to-muted/20">
                     {messages.map((message, index) => (
                       <div
                         key={index}
@@ -237,45 +241,45 @@ export default function AgentPage() {
                         style={{ animationDelay: `${index * 50}ms` }}
                       >
                         {message.role === "assistant" && (
-                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center flex-shrink-0 border border-primary/20">
-                            <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center flex-shrink-0 border border-primary/20">
+                            <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-primary" />
                           </div>
                         )}
                         <div
-                          className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-4 py-3 sm:px-5 sm:py-4 shadow-md ${
+                          className={`max-w-[85%] sm:max-w-[80%] lg:max-w-[70%] rounded-2xl px-3 sm:px-4 lg:px-5 py-2 sm:py-3 lg:py-4 shadow-md text-sm sm:text-base ${
                             message.role === "user"
                               ? "bg-gradient-to-br from-primary to-primary/90 text-primary-foreground"
                               : "bg-muted text-foreground border border-border"
                           }`}
                         >
-                          <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap break-words">
+                          <p className="leading-relaxed whitespace-pre-wrap break-words">
                             {message.content}
                           </p>
                         </div>
                         {message.role === "user" && (
-                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center flex-shrink-0 border border-border">
-                            <User className="w-4 h-4 sm:w-5 sm:h-5 text-secondary-foreground" />
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-xl bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center flex-shrink-0 border border-border">
+                            <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-secondary-foreground" />
                           </div>
                         )}
                       </div>
                     ))}
                     {isLoading && (
                       <div className="flex gap-2 sm:gap-3 animate-slide-up">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center flex-shrink-0 border border-primary/20">
-                          <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center flex-shrink-0 border border-primary/20">
+                          <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-primary" />
                         </div>
-                        <div className="max-w-[80%] rounded-2xl px-4 py-3 sm:px-5 sm:py-4 bg-muted border border-border shadow-md">
-                          <div className="flex gap-1.5">
+                        <div className="max-w-[80%] lg:max-w-[70%] rounded-2xl px-3 sm:px-4 lg:px-5 py-2 sm:py-3 lg:py-4 bg-muted border border-border shadow-md">
+                          <div className="flex gap-1">
                             <div
-                              className="w-2 h-2 rounded-full bg-muted-foreground/50 animate-bounce"
+                              className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-muted-foreground/50 animate-bounce"
                               style={{ animationDelay: "0ms" }}
                             />
                             <div
-                              className="w-2 h-2 rounded-full bg-muted-foreground/50 animate-bounce"
+                              className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-muted-foreground/50 animate-bounce"
                               style={{ animationDelay: "150ms" }}
                             />
                             <div
-                              className="w-2 h-2 rounded-full bg-muted-foreground/50 animate-bounce"
+                              className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-muted-foreground/50 animate-bounce"
                               style={{ animationDelay: "300ms" }}
                             />
                           </div>
@@ -285,7 +289,8 @@ export default function AgentPage() {
                     <div ref={messagesEndRef} />
                   </div>
 
-                  <div className="p-4 sm:p-6 border-t-2 border-border bg-gradient-to-r from-transparent to-muted/30">
+                  {/* Input area */}
+                  <div className="p-3 sm:p-4 lg:p-6 border-t-2 border-border bg-gradient-to-r from-transparent to-muted/30 flex-shrink-0">
                     <div className="flex gap-2 sm:gap-3">
                       <input
                         type="text"
@@ -294,15 +299,15 @@ export default function AgentPage() {
                         onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
                         placeholder="Type your message..."
                         disabled={isLoading}
-                        className="flex-1 px-4 py-3 sm:px-5 sm:py-4 rounded-2xl bg-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-50 border-2 border-border transition-all text-sm sm:text-base"
+                        className="flex-1 px-3 sm:px-4 lg:px-5 py-2 sm:py-3 lg:py-4 rounded-2xl bg-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-50 border-2 border-border transition-all text-sm sm:text-base"
                       />
                       <Button
                         onClick={handleSend}
                         size="icon"
-                        className="rounded-2xl w-12 h-12 sm:w-14 sm:h-14 shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
+                        className="rounded-2xl w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 shadow-lg hover:shadow-xl transition-all hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 flex-shrink-0"
                         disabled={isLoading}
                       >
-                        <Send className="w-5 h-5 sm:w-6 sm:h-6" />
+                        <Send className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
                       </Button>
                     </div>
                   </div>

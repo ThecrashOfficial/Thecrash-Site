@@ -43,7 +43,7 @@ const GiftIcon = () => (
 
 const articles = [
   {
-    title: "Understanding TypeScript Generics",
+    title: "Example- Understanding TypeScript Generics",
     excerpt: "A deep dive into TypeScript generics and how they can make your code more reusable and type-safe.",
     category: "TypeScript",
     date: "2026-01-01",

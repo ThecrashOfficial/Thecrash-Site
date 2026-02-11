@@ -38,7 +38,7 @@ const projects = [
       "Community Forum for discussions and engagement",
     ],
     tags: ["Next.js 16", "TypeScript", "Tailwind CSS", "Google AI Studio API", "shadcn/ui"],
-    github: "https://github.com/TheSoneHub/the-sone-hub-site",
+    github: "https://github.com/ThecrashOfficial/Thecrash-Site.git",
     demo: "https://v0-the-crash-site.vercel.app/",
     year: "2024",
   },
