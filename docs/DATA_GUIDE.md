@@ -10,7 +10,7 @@
 - Feature cards
 
 **ဘယ်မှာ ရှာရမှာလဲ:**
-\`\`\`typescript
+```typescript
 // Line ~70 - Hub Cards Array
 const hubCards = [
   {
@@ -22,10 +22,10 @@ const hubCards = [
   },
   // ... နောက်ထပ် cards များ
 ]
-\`\`\`
+```
 
 **ဥပမာ:**
-\`\`\`typescript
+```typescript
 {
   title: "Resources",
   description: "100+ Free Templates, Guides & Book Summaries",  // သင့်ရဲ့ real numbers
@@ -33,7 +33,7 @@ const hubCards = [
   href: "/resources",
   color: "from-yellow-500/10 to-amber-500/10",
 }
-\`\`\`
+```
 
 ---
 
@@ -45,7 +45,7 @@ const hubCards = [
 - Categories
 
 **Articles ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 // Line ~60 - Articles Array
 const articles = [
   {
@@ -58,10 +58,10 @@ const articles = [
   },
   // နောက်ထပ် articles ထပ်ထည့်ပါ...
 ]
-\`\`\`
+```
 
 **Free Resources ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 // Line ~30 - Free Resources Array
 const freeResources = [
   {
@@ -72,14 +72,14 @@ const freeResources = [
     fileUrl: "/downloads/your-file.pdf",  // သင့် file path
   },
 ]
-\`\`\`
+```
 
 ---
 
 ### 3. **Resources Page (app/resources/page.tsx)**
 
 **Featured Prompts ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 // Line ~80 - Featured Prompts Array
 const featuredPrompts = [
   {
@@ -89,10 +89,10 @@ const featuredPrompts = [
     tier: "Free",  // or "Premium"
   },
 ]
-\`\`\`
+```
 
 **Notion Templates ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 // Line ~95 - Notion Templates Array
 const notionTemplates = [
   {
@@ -104,10 +104,10 @@ const notionTemplates = [
     tier: "Free",
   },
 ]
-\`\`\`
+```
 
 **Video Plugins ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 // Line ~110 - Video Plugins Array
 const videoPlugins = [
   {
@@ -120,10 +120,10 @@ const videoPlugins = [
     fileUrl: "/downloads/your-plugin.zip",
   },
 ]
-\`\`\`
+```
 
 **Guides & Books ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 // Line ~130 - Resources Array
 const resources = [
   {
@@ -136,14 +136,14 @@ const resources = [
     tier: "Free",  // or "Premium"
   },
 ]
-\`\`\`
+```
 
 ---
 
 ### 4. **Projects Page (app/projects/page.tsx)**
 
 **Projects ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 // Line ~40 - Projects Array
 const projects = [
   {
@@ -163,14 +163,14 @@ const projects = [
     year: "2024",
   },
 ]
-\`\`\`
+```
 
 ---
 
 ### 5. **Services Page (app/services/page.tsx)**
 
 **Services ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 // Line ~10 - Services Array
 const services = [
   {
@@ -186,14 +186,14 @@ const services = [
     cta: "Book Session",  // Button text
   },
 ]
-\`\`\`
+```
 
 ---
 
 ### 6. **Community Page (app/community/page.tsx)**
 
 **Community Links ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 const communities = [
   {
     name: "Community အမည်",
@@ -204,28 +204,28 @@ const communities = [
     color: "from-blue-500/10 to-cyan-500/10",
   },
 ]
-\`\`\`
+```
 
 ---
 
 ### 7. **About Page (app/about/page.tsx)**
 
 **Philosophical Quotes ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 // Quotes Array ရှာပါ
 const philosophicalQuotes = [
   "သင့်ရဲ့ quote သို့မဟုတ် သင့်ရဲ့ စာတို",
   "နောက်ထပ် quote...",
   // 10-15 quotes ထည့်နိုင်ပါတယ်
 ]
-\`\`\`
+```
 
 ---
 
 ### 8. **AI Agent Page (app/agent/page.tsx)**
 
 **Mentor Types ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 const mentorTypes = [
   {
     id: "new-mentor",
@@ -234,14 +234,14 @@ const mentorTypes = [
     systemPrompt: "AI ကို ဘယ်လို ပြောမှာလဲ ရှင်းပြပါ...",
   },
 ]
-\`\`\`
+```
 
 ---
 
 ### 9. **Digital Garden Page (app/garden/page.tsx)**
 
 **Garden Notes ထည့်နည်း:**
-\`\`\`typescript
+```typescript
 const gardenItems = [
   {
     id: "note-1",
@@ -253,43 +253,43 @@ const gardenItems = [
     tags: ["react", "nextjs"],
   },
 ]
-\`\`\`
+```
 
 ---
 
 ## 📝 အရေးကြီးတဲ့ Tips
 
 ### File Paths
-\`\`\`typescript
+```typescript
 // ပုံတွေ ထည့်တဲ့အခါ
 logo: "/your-logo.svg"  // public folder ထဲမှာ ထားပါ
 
 // Downloads
 fileUrl: "/downloads/your-file.pdf"  // public/downloads/ folder ထဲမှာ ထားပါ
-\`\`\`
+```
 
 ### Date Format
-\`\`\`typescript
+```typescript
 date: "2024-01-15"  // YYYY-MM-DD format သုံးပါ
-\`\`\`
+```
 
 ### URLs
-\`\`\`typescript
+```typescript
 // External links
 link: "https://yourwebsite.com"
 
 // Internal links
 href: "/about"  // / ခြေကနေ စပါ
-\`\`\`
+```
 
 ### File Organization
-\`\`\`
+```
 public/
   ├── downloads/          ← PDF, ZIP files
   ├── images/            ← Images
   ├── your-logo.svg      ← Logo files
   └── favicon.ico
-\`\`\`
+```
 
 ---
 
