@@ -208,46 +208,19 @@ export default function HomePage() {
             })}
           </div>
 
-          <div className="max-w-4xl mx-auto mb-16 px-4 animate-slide-up animate-delay-300">
-            <Link href="/agent">
-              <Card className="relative p-8 sm:p-12 overflow-hidden border-2 border-primary/50 bg-gradient-to-br from-primary/5 via-background to-background hover:border-primary hover:shadow-2xl transition-all duration-300 group cursor-pointer">
-                {/* Animated background elements */}
-                <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10 group-hover:scale-150 transition-transform duration-500"></div>
-                
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between gap-6 mb-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                        <BotIcon />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">Meet Your AI Coaches</h3>
-                        <p className="text-muted-foreground text-sm sm:text-base">6 specialized mentors ready to help</p>
-                      </div>
-                    </div>
-                    <ArrowRightIcon />
-                  </div>
-
-                  <p className="text-foreground/80 mb-6 leading-relaxed">
-                    Chat with AI mentors specializing in personal growth, finances, philosophy, learning strategies, and more. Get personalized guidance from multiple perspectives.
-                  </p>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
-                    <div className="px-3 py-2 bg-primary/10 rounded-lg border border-primary/20 text-xs font-semibold text-foreground">💼 Personal Coach</div>
-                    <div className="px-3 py-2 bg-primary/10 rounded-lg border border-primary/20 text-xs font-semibold text-foreground">🏆 Life Coach</div>
-                    <div className="px-3 py-2 bg-primary/10 rounded-lg border border-primary/20 text-xs font-semibold text-foreground">💰 Financial</div>
-                    <div className="px-3 py-2 bg-primary/10 rounded-lg border border-primary/20 text-xs font-semibold text-foreground">🧘 Philosophy</div>
-                    <div className="px-3 py-2 bg-primary/10 rounded-lg border border-primary/20 text-xs font-semibold text-foreground">📚 Learning</div>
-                    <div className="px-3 py-2 bg-primary/10 rounded-lg border border-primary/20 text-xs font-semibold text-foreground">🎯 Meta</div>
-                  </div>
-
-                  <div className="flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all duration-300">
-                    <span>Start Chatting</span>
-                    <span>→</span>
-                  </div>
-                </div>
-              </Card>
-            </Link>
+          <div className="max-w-4xl mx-auto mb-16 px-4">
+            <Card className="p-8 sm:p-12 text-center border-2 border-border bg-gradient-to-br from-background to-muted/30">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4">Need Custom Development or Coaching?</h2>
+              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                Get personalized support for your projects, code reviews, or one-on-one mentoring sessions
+              </p>
+              <Link
+                href="/services"
+                className="inline-block px-8 py-4 bg-foreground text-background rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
+              >
+                View Services
+              </Link>
+            </Card>
           </div>
 
           <div
