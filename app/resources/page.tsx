@@ -61,6 +61,12 @@ const LinkIcon = () => (
   </svg>
 )
 
+const TelegramIcon = () => (
+  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.328-.373-.115l-6.869 4.332-2.96-.924c-.644-.203-.658-.644.136-.953l11.566-4.453c.538-.196 1.006.128.832.941z"/>
+  </svg>
+)
+
 const resources = [
   {
     title: "AI Prompt Engineering Master Guide",
@@ -71,6 +77,7 @@ const resources = [
     format: "PDF",
     pages: "45 pages",
     tier: "Free",
+    telegramLink: "https://t.me/thecrash_hub",
   },
 ]
 
@@ -525,12 +532,15 @@ export default function ResourcesPage() {
                       </Badge>
                     </div>
                   </div>
-                  <button
-                    onClick={() => handleDownload(resource.title)}
-                    className="p-2 bg-primary text-primary-foreground rounded-lg transition-all duration-300 hover:scale-110 hover:shadow-lg hover:rotate-6 active:scale-95"
+                  <a
+                    href={resource.telegramLink || "https://t.me"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-gradient-to-br from-cyan-500 to-blue-500 text-white rounded-lg transition-all duration-300 hover:scale-110 hover:shadow-lg hover:rotate-6 active:scale-95 flex items-center justify-center"
+                    title="Get on Telegram"
                   >
-                    <DownloadIcon />
-                  </button>
+                    <TelegramIcon />
+                  </a>
                 </div>
 
                 <h3 className="text-xl sm:text-2xl font-semibold text-card-foreground mb-2 transition-colors duration-300 group-hover:text-primary">
