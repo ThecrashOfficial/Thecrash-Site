@@ -82,23 +82,29 @@ const ResourcesIcon = () => (
   </svg>
 )
 
+const StoreIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+    />
+  </svg>
+)
+
+const BlogIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2v-5.5a2.972 2.972 0 002-2.5A2.972 2.972 0 0019 7.5"
+    />
+  </svg>
+)
+
 const hubCards = [
-  {
-    title: "Projects",
-    description: "Own Projects",
-    detail: "Live Production Apps Built with AI",
-    icon: CodeIcon,
-    href: "/projects",
-    color: "from-blue-500/20 to-cyan-500/20",
-  },
-  {
-    title: "Free Resources",
-    description: "Prompts, Templates & Summaries",
-    detail: "Download immediately, no signup required",
-    icon: ResourcesIcon,
-    href: "/resources",
-    color: "from-amber-500/20 to-yellow-500/20",
-  },
   {
     title: "Meta",
     description: "Web Dev, AI & Automation",
@@ -106,6 +112,22 @@ const hubCards = [
     icon: BookOpenIcon,
     href: "/learn",
     color: "from-green-500/20 to-emerald-500/20",
+  },
+  {
+    title: "Store",
+    description: "Premium Templates & Tools",
+    detail: "Curated resources for builders",
+    icon: StoreIcon,
+    href: "/store",
+    color: "from-purple-500/20 to-pink-500/20",
+  },
+  {
+    title: "Blog",
+    description: "Tech Tips & Insights",
+    detail: "Latest updates on web & AI",
+    icon: BlogIcon,
+    href: "/blog",
+    color: "from-orange-500/20 to-red-500/20",
   },
   {
     title: "AI Agent",
@@ -153,18 +175,18 @@ export default function HomePage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10 animate-slide-up animate-delay-300 px-4">
               <Link
-                href="/projects"
+                href="/learn"
                 className="group px-8 py-4 bg-foreground text-background rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 text-center relative overflow-hidden"
               >
-                <span className="relative z-10">Explore Projects</span>
+                <span className="relative z-10">Explore Resources</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
 
               <Link
-                href="/resources"
+                href="/agent"
                 className="px-8 py-4 border-2 border-foreground text-foreground rounded-xl font-semibold transition-all duration-300 hover:bg-foreground hover:text-background hover:scale-105 hover:shadow-xl active:scale-95 text-center"
               >
-                Free Resources
+                Talk to AI Agent
               </Link>
             </div>
           </div>
@@ -210,15 +232,15 @@ export default function HomePage() {
 
           <div className="max-w-4xl mx-auto mb-16 px-4">
             <Card className="p-8 sm:p-12 text-center border-2 border-border bg-gradient-to-br from-background to-muted/30">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4">Need Custom Development or Coaching?</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4">Join Community</h2>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Get personalized support for your projects, code reviews, or one-on-one mentoring sessions
+                Connect with builders, share knowledge, and grow together
               </p>
               <Link
-                href="/services"
+                href="/community"
                 className="inline-block px-8 py-4 bg-foreground text-background rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
               >
-                View Services
+                Join Now
               </Link>
             </Card>
           </div>
