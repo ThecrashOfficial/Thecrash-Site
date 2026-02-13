@@ -118,7 +118,7 @@ const hubCards = [
     description: "Premium Templates & Tools",
     detail: "Curated resources for builders",
     icon: StoreIcon,
-    href: "/store",
+    href: "/market",
     color: "from-purple-500/20 to-pink-500/20",
   },
   {
