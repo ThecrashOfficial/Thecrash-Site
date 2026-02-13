@@ -57,139 +57,244 @@ const TelegramIcon = () => (
 )
 
 const marketplaceItems = [
-  // Free Resources
+  // Prompt Templates Section
   {
     id: 1,
-    title: "AI Prompt Engineering Master Guide",
-    description: "Complete guide with 50+ tested prompts for ChatGPT, Claude, and Gemini. Learn prompt structures, best practices, and advanced techniques.",
-    category: "AI & Prompts",
-    price: 0,
-    format: "PDF (45 pages)",
-    downloads: "2,543",
-    type: "free",
-    buttonType: "telegram",
-    link: "https://t.me/thecrashOfficial",
-  },
-  {
-    id: 2,
-    title: "Web Development Basics",
-    description: "Essential concepts for modern web development including HTML, CSS, JavaScript, and React fundamentals.",
-    category: "Web Development",
-    price: 0,
-    format: "Guide (30 pages)",
-    downloads: "1,234",
-    type: "free",
-    buttonType: "telegram",
-    link: "https://t.me/thecrashOfficial",
-  },
-  {
-    id: 3,
-    title: "Building Your First AI Agent",
-    description: "Step-by-step guide to understanding and building your first AI agent from scratch.",
-    category: "AI & Automation",
-    price: 0,
-    format: "PDF (25 pages)",
-    downloads: "856",
-    type: "free",
-    buttonType: "telegram",
-    link: "https://t.me/thecrashOfficial",
-  },
-  {
-    id: 4,
     title: "50 Quick AI Prompts Collection",
     description: "50 copy-paste ready AI prompts for productivity, content creation, coding, and problem-solving.",
-    category: "AI & Prompts",
+    category: "Prompt Templates",
     price: 0,
     format: "Prompt Templates",
     downloads: "5,234",
-    type: "free",
+    type: "prompt",
     buttonType: "copy",
     link: "#",
   },
-
-  // Paid Resources
   {
-    id: 5,
-    title: "Complete Next.js 16 Masterclass",
-    description: "In-depth course covering Next.js 16, App Router, Server Components, and modern full-stack development patterns.",
-    category: "Web Development",
-    price: 49999,
-    format: "Video Course (12 hours)",
-    downloads: "324",
-    type: "paid",
-    buttonType: "buy",
-    link: "#",
-  },
-  {
-    id: 6,
-    title: "AI Automation Business Bundle",
-    description: "Complete guide to building and monetizing AI automation products. Includes templates, case studies, and business models.",
-    category: "AI & Automation",
-    price: 99999,
-    format: "Course + Templates (20 hours)",
-    downloads: "156",
-    type: "paid",
-    buttonType: "buy",
-    link: "#",
-  },
-  {
-    id: 7,
+    id: 2,
     title: "100 AI Prompts for Business",
     description: "Premium collection of 100 business-focused AI prompts for marketing, sales, management, and strategy.",
-    category: "AI & Prompts",
+    category: "Prompt Templates",
     price: 14999,
     format: "Prompt Collection",
     downloads: "432",
-    type: "paid",
+    type: "prompt",
     buttonType: "copy",
     link: "#",
   },
   {
-    id: 8,
+    id: 3,
+    title: "AI Prompt Engineering Master Guide",
+    description: "Complete guide with 50+ tested prompts for ChatGPT, Claude, and Gemini. Learn prompt structures, best practices, and advanced techniques.",
+    category: "Prompt Templates",
+    price: 0,
+    format: "PDF (45 pages)",
+    downloads: "2,543",
+    type: "prompt",
+    buttonType: "telegram",
+    link: "https://t.me/thecrashOfficial",
+  },
+
+  // Notion Templates Section
+  {
+    id: 4,
     title: "Premium Notion Template Pack",
     description: "All-in-one Notion system for project management, CRM, knowledge base, and task tracking.",
-    category: "Productivity",
+    category: "Notion Templates",
     price: 24999,
     format: "Notion Template",
     downloads: "567",
-    type: "paid",
+    type: "notion",
     buttonType: "notion",
     link: "https://notion.so",
   },
   {
+    id: 5,
+    title: "Daily Focus OS Notion Template",
+    description: "Beginner-friendly Notion template to prioritize tasks, track progress, and complete important work without overwhelm.",
+    category: "Notion Templates",
+    price: 9999,
+    format: "Notion Template",
+    downloads: "834",
+    type: "notion",
+    buttonType: "notion",
+    link: "https://notion.so",
+  },
+
+  // Books Section
+  {
+    id: 6,
+    title: "Web Development Basics",
+    description: "Essential concepts for modern web development including HTML, CSS, JavaScript, and React fundamentals.",
+    category: "Books",
+    price: 0,
+    format: "Guide (30 pages)",
+    downloads: "1,234",
+    type: "book",
+    buttonType: "telegram",
+    link: "https://t.me/thecrashOfficial",
+  },
+  {
+    id: 7,
+    title: "Building Your First AI Agent",
+    description: "Step-by-step guide to understanding and building your first AI agent from scratch.",
+    category: "Books",
+    price: 0,
+    format: "PDF (25 pages)",
+    downloads: "856",
+    type: "book",
+    buttonType: "telegram",
+    link: "https://t.me/thecrashOfficial",
+  },
+  {
+    id: 8,
+    title: "Complete Guide to Next.js Development",
+    description: "Comprehensive guide covering Next.js 16, App Router, Server Components, and modern full-stack development patterns with real-world examples.",
+    category: "Books",
+    price: 19999,
+    format: "E-Book (150 pages)",
+    downloads: "324",
+    type: "book",
+    buttonType: "buy",
+    link: "#",
+  },
+
+  // Packages Section
+  {
     id: 9,
+    title: "Complete Next.js 16 Masterclass",
+    description: "In-depth course covering Next.js 16, App Router, Server Components, and modern full-stack development patterns.",
+    category: "Packages",
+    price: 49999,
+    format: "Video Course (12 hours)",
+    downloads: "324",
+    type: "package",
+    buttonType: "buy",
+    link: "#",
+  },
+  {
+    id: 10,
+    title: "AI Automation Business Bundle",
+    description: "Complete guide to building and monetizing AI automation products. Includes templates, case studies, and business models.",
+    category: "Packages",
+    price: 99999,
+    format: "Course + Templates (20 hours)",
+    downloads: "156",
+    type: "package",
+    buttonType: "buy",
+    link: "#",
+  },
+  {
+    id: 11,
     title: "Web Dev Template Collection",
     description: "Premium collection of 10+ React and Next.js templates ready for production deployment.",
-    category: "Templates",
+    category: "Packages",
     price: 19999,
     format: "Code Templates",
     downloads: "212",
-    type: "paid",
+    type: "package",
     buttonType: "buy",
     link: "#",
   },
 ]
 
 export default function MarketPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All")
-
-  const categories = ["All", "AI & Prompts", "Web Development", "AI & Automation", "Templates", "Productivity"]
-
-  const freeItems = marketplaceItems.filter((item) => item.type === "free")
-  const paidItems = marketplaceItems.filter((item) => item.type === "paid")
-
-  const filterItemsByCategory = (items) => {
-    if (selectedCategory === "All") return items
-    return items.filter((item) => item.category === selectedCategory)
-  }
-
-  const filteredFreeItems = filterItemsByCategory(freeItems)
-  const filteredPaidItems = filterItemsByCategory(paidItems)
-
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text)
     alert("Copied to clipboard!")
   }
+
+  const promptTemplates = marketplaceItems.filter((item) => item.type === "prompt")
+  const notionTemplates = marketplaceItems.filter((item) => item.type === "notion")
+  const books = marketplaceItems.filter((item) => item.type === "book")
+  const packages = marketplaceItems.filter((item) => item.type === "package")
+
+  const MarketSection = ({ title, accentColor, items, icon: Icon }) => (
+    <div className="mb-16">
+      <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+        <span className={`w-1 h-8 rounded-full ${accentColor}`}></span>
+        {title}
+      </h2>
+      <div className="grid md:grid-cols-2 gap-6">
+        {items.map((item, index) => (
+          <Card
+            key={item.id}
+            className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02]"
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
+            <div className="p-6 lg:p-8 flex flex-col justify-between h-full">
+              {/* Badge */}
+              <div className="flex items-start justify-between mb-4">
+                <Badge variant="secondary" className="text-xs">
+                  {item.category}
+                </Badge>
+                <span className="text-xs text-muted-foreground">{item.downloads} downloads</span>
+              </div>
+
+              {/* Content */}
+              <div className="mb-4 flex-1">
+                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.description}</p>
+                <p className="text-xs text-muted-foreground">{item.format}</p>
+              </div>
+
+              {/* Price & Action */}
+              <div className="border-t border-border/50 pt-4">
+                <div className="flex items-center justify-between">
+                  <p className={`text-lg font-bold ${item.price === 0 ? "text-green-500" : "text-foreground"}`}>
+                    {item.price === 0 ? "Free" : `${item.price.toLocaleString()} MMK`}
+                  </p>
+
+                  {item.buttonType === "copy" && (
+                    <button
+                      onClick={() => handleCopy(item.title)}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
+                    >
+                      <CopyIcon />
+                      Copy
+                    </button>
+                  )}
+
+                  {item.buttonType === "notion" && (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
+                    >
+                      <ExternalLinkIcon />
+                      Get
+                    </a>
+                  )}
+
+                  {item.buttonType === "telegram" && (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
+                    >
+                      <TelegramIcon />
+                      Get
+                    </a>
+                  )}
+
+                  {item.buttonType === "buy" && (
+                    <button className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95">
+                      <ShoppingCartIcon />
+                      Buy Now
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  )
 
   return (
     <div className="min-h-screen bg-background">
@@ -198,189 +303,47 @@ export default function MarketPage() {
       <main className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="mb-12 animate-slide-up">
+          <div className="mb-16 animate-slide-up">
             <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">Market</h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Discover free and premium resources, templates, and courses to accelerate your journey. Everything you need to build, learn, and scale.
+              Discover everything you need to build, learn, and scale. Premium prompts, templates, books, and complete packages all in one place.
             </p>
           </div>
 
-          {/* Category Filter */}
-          <div className="mb-12 animate-slide-up">
-            <h3 className="text-sm font-semibold text-foreground mb-3">Filter by Category</h3>
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                    selectedCategory === category
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Free Resources Section */}
-          {filteredFreeItems.length > 0 && (
-            <div className="mb-16">
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <span className="w-1 h-8 bg-green-500 rounded-full"></span>
-                Free Resources
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {filteredFreeItems.map((item, index) => (
-                  <Card
-                    key={item.id}
-                    className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02] stagger-item"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="p-6 lg:p-8 flex flex-col justify-between h-full">
-                      {/* Type Badge */}
-                      <div className="flex items-start justify-between mb-4">
-                        <Badge variant="default" className="text-xs bg-green-500 hover:bg-green-600">
-                          Free
-                        </Badge>
-                        <span className="text-xs text-muted-foreground">{item.downloads} downloads</span>
-                      </div>
-
-                      {/* Title & Category */}
-                      <div className="mb-4 flex-1">
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-4">{item.category}</p>
-
-                        {/* Description */}
-                        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.description}</p>
-
-                        {/* Format */}
-                        <p className="text-xs text-muted-foreground mb-4">{item.format}</p>
-                      </div>
-
-                      {/* Price & Action */}
-                      <div className="border-t border-border/50 pt-4">
-                        <div className="flex items-center justify-between">
-                          <p className="text-lg font-bold text-green-500">Free</p>
-
-                          {item.buttonType === "copy" && (
-                            <button
-                              onClick={() => handleCopy(item.title)}
-                              className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
-                            >
-                              <CopyIcon />
-                              Copy
-                            </button>
-                          )}
-
-                          {item.buttonType === "telegram" && (
-                            <a
-                              href={item.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
-                            >
-                              <TelegramIcon />
-                              Get on Telegram
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            </div>
+          {/* Prompt Templates Section */}
+          {promptTemplates.length > 0 && (
+            <MarketSection
+              title="Prompt Templates"
+              accentColor="bg-blue-500"
+              items={promptTemplates}
+            />
           )}
 
-          {/* Paid Resources Section */}
-          {filteredPaidItems.length > 0 && (
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <span className="w-1 h-8 bg-primary rounded-full"></span>
-                Premium Resources
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {filteredPaidItems.map((item, index) => (
-                  <Card
-                    key={item.id}
-                    className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02] stagger-item"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="p-6 lg:p-8 flex flex-col justify-between h-full">
-                      {/* Type Badge */}
-                      <div className="flex items-start justify-between mb-4">
-                        <Badge variant="secondary" className="text-xs">
-                          Premium
-                        </Badge>
-                        <span className="text-xs text-muted-foreground">{item.downloads} downloads</span>
-                      </div>
-
-                      {/* Title & Category */}
-                      <div className="mb-4 flex-1">
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-4">{item.category}</p>
-
-                        {/* Description */}
-                        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.description}</p>
-
-                        {/* Format */}
-                        <p className="text-xs text-muted-foreground mb-4">{item.format}</p>
-                      </div>
-
-                      {/* Price & Action */}
-                      <div className="border-t border-border/50 pt-4">
-                        <div className="flex items-center justify-between">
-                          <p className="text-lg font-bold text-foreground">{item.price.toLocaleString()} MMK</p>
-
-                          {item.buttonType === "buy" && (
-                            <button className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95">
-                              <ShoppingCartIcon />
-                              Buy Now
-                            </button>
-                          )}
-
-                          {item.buttonType === "copy" && (
-                            <button
-                              onClick={() => handleCopy(item.title)}
-                              className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
-                            >
-                              <CopyIcon />
-                              Copy
-                            </button>
-                          )}
-
-                          {item.buttonType === "notion" && (
-                            <a
-                              href={item.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
-                            >
-                              <ExternalLinkIcon />
-                              Get Template
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            </div>
+          {/* Notion Templates Section */}
+          {notionTemplates.length > 0 && (
+            <MarketSection
+              title="Notion Templates"
+              accentColor="bg-purple-500"
+              items={notionTemplates}
+            />
           )}
 
-          {/* Empty State */}
-          {filteredFreeItems.length === 0 && filteredPaidItems.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">No items found matching your filters.</p>
-            </div>
+          {/* Books Section */}
+          {books.length > 0 && (
+            <MarketSection
+              title="Books"
+              accentColor="bg-amber-500"
+              items={books}
+            />
+          )}
+
+          {/* Packages Section */}
+          {packages.length > 0 && (
+            <MarketSection
+              title="Packages"
+              accentColor="bg-primary"
+              items={packages}
+            />
           )}
         </div>
       </main>
