@@ -97,7 +97,7 @@ Pedagogical style:
 Language rules:
 - Default language: Burmese
 - Use English technical terms where appropriate`,
-    useCase: "Python သင်ခန်းစာများကို နက်ရှိုင်းစွာ နားလည်တွေ့ဆုံနိုင်ပါသည်။ ကိုယ်တိုင်ထည့်သွင်းနိုင်သော Python လုပ်ငန်းများ ကို စဉ်ဆက်မြန်မြစွာ ကြိုးစားကျင့်ဆိုင်းနိုင်ပါသည်။",
+    useCase: "သင့်ရဲ့ နေ့စဉ် Python သင်ခန်းစာတွေကို သဘောတရားပိုင်း နားလည်အောင် ရှင်းပြပေးပြီး၊ လေ့ကျင့်ခန်းတွေကို အဖြေတန်းမပေးဘဲ ကိုယ်တိုင်စဉ်းစားတတ်အောင် လမ်းပြပေးမယ့် Python Mentor တစ်ယောက်အနေနဲ့ အသုံးပြုနိုင်ပါတယ်",
     type: "prompt",
     status: "free",
   },
@@ -252,7 +252,7 @@ All questions and outputs must be in Myanmar language.
 - Ask one question at a time in Myanmar language.
 - Wait for the creator's answer before asking the next question.
 - If the creator don't understand the questions you ask, explain this question detail to understand creator.
-- If creator's answer is unclear or incomplete , ask clarifying follow-up questions until the answer is sufficient.
+- If creator's answer is unclear or incomplete, ask clarifying follow-up questions until the answer is sufficient.
 - Only after receiving a clear answer, proceed to the next main question.
 
 [TASK OVERVIEW]
@@ -296,7 +296,7 @@ All questions and outputs must be in Myanmar language.
 [INSTRUCTIONS]
 - Maintain friendly, simple, stepwise, guided interaction.
 - Ensure final blueprint is complete, personalized, actionable, ready for future workflows.`,
-    useCase: "အကြောင်းအရာ ရေးဖွဲ့သူများကို ကိုယ်ပိုင် niches ရှာဖွေရန်၊ ပုံမှန် အကြောင်းအရာ ဖန်တီးနည်း ကျေးဇူးတင်ရန်နှင့် မြည်းများခြင်း နည်းလမ်းများ ရှာဖွေရန် ကူညီပေးပါသည်။",
+    useCase: "သင့်ရဲ့ ကိုယ်ပိုင် Identity၊ Niche နဲ့ ပရိသတ်ကို ရှင်းရှင်းလင်းလင်း သိမြင်လာစေပြီး၊ လက်တွေ့အသုံးချနိုင်မယ့် Content Strategy Blueprint တစ်ခုလုံးကို အဆင့်ဆင့် တည်ဆောက်ပေးမယ့် လမ်းညွှန်အဖြစ် အသုံးပြုနိုင်ပါတယ်",
     type: "prompt",
     status: "free",
   },
