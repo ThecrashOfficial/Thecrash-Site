@@ -131,105 +131,96 @@ export default function MetaPage() {
           </div>
 
           {/* Products Grid */}
-          <div className="space-y-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product, index) => (
               <Card
                 key={index}
-                className={`overflow-hidden border-border bg-card group transition-all duration-500 hover:shadow-2xl hover:border-primary/50 hover:scale-[1.01]`}
-                style={{ animationDelay: `${index * 150}ms` }}
+                className="overflow-hidden border border-border/50 bg-card/50 backdrop-blur group transition-all duration-500 hover:shadow-xl hover:border-primary/50 hover:bg-card/80 hover:scale-[1.02]"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className={`grid gap-0 ${index % 2 === 0 ? "md:grid-cols-[320px_1fr]" : "md:grid-cols-[1fr_320px]"}`}>
-                  {/* Product Image/Logo - Minimalist Apple-style */}
-                  <div className={`relative aspect-square md:aspect-auto overflow-hidden bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center p-6 transition-all duration-500 group-hover:from-primary/5 group-hover:to-muted/50 ${index % 2 === 1 ? "md:order-2" : ""}`}>
+                <div className="flex flex-col h-full">
+                  {/* Icon Container - Top */}
+                  <div className="relative w-full aspect-square overflow-hidden bg-gradient-to-br from-muted/50 to-muted/30 flex items-center justify-center p-6 transition-all duration-500 group-hover:from-primary/5 group-hover:to-muted/40">
                     {product.logo && (
-                      <div className="flex items-center justify-center w-full h-full">
-                        <Image
-                          src={product.logo}
-                          alt={product.title}
-                          width={240}
-                          height={240}
-                          className="object-contain max-w-[70%] max-h-[70%] transition-transform duration-500 group-hover:scale-105 drop-shadow-sm"
-                        />
-                      </div>
+                      <Image
+                        src={product.logo}
+                        alt={product.title}
+                        width={160}
+                        height={160}
+                        className="object-contain max-w-[60%] max-h-[60%] transition-transform duration-500 group-hover:scale-110 drop-shadow-sm"
+                      />
                     )}
                   </div>
 
-                  {/* Product Details */}
-                  <div className="p-8 lg:p-12 flex flex-col justify-between">
-                    <div>
-                      {/* Header with Badges */}
-                      <div className="flex items-center gap-3 mb-4 flex-wrap animate-slide-up" style={{ animationDelay: `${index * 150 + 100}ms` }}>
-                        <Badge
-                          variant={
-                            product.status === "Live"
-                              ? "default"
-                              : product.status === "Available"
-                                ? "secondary"
-                                : "outline"
-                          }
-                          className="text-xs"
-                        >
-                          {product.status}
-                        </Badge>
-                        <span className="text-xs text-muted-foreground">{product.category}</span>
-                        <span className="text-xs text-muted-foreground">•</span>
-                        <span className="text-xs text-muted-foreground">{product.year}</span>
-                      </div>
-
-                      {/* Title */}
-                      <div className="mb-4 animate-slide-up" style={{ animationDelay: `${index * 150 + 150}ms` }}>
-                        <h2 className="text-3xl font-bold text-card-foreground transition-colors duration-300 group-hover:text-primary">
-                          {product.title}
-                        </h2>
-                        {product.subtitle && <p className="text-sm text-muted-foreground mt-1">{product.subtitle}</p>}
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-muted-foreground mb-6 leading-relaxed animate-slide-up" style={{ animationDelay: `${index * 150 + 200}ms` }}>
-                        {product.description}
-                      </p>
-
-                      {/* Features */}
-                      <div className="mb-6 animate-slide-up" style={{ animationDelay: `${index * 150 + 250}ms` }}>
-                        <h3 className="text-sm font-semibold text-card-foreground mb-3">Key Features:</h3>
-                        <ul className="space-y-2">
-                          {product.features.map((feature, idx) => (
-                            <li
-                              key={idx}
-                              className="text-sm text-muted-foreground flex items-start gap-2 transition-all duration-300 hover:text-foreground hover:translate-x-1"
-                            >
-                              <span className="text-primary mt-1 transition-transform duration-300 hover:scale-125">•</span>
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                  {/* Content - Bottom */}
+                  <div className="p-6 flex flex-col justify-between flex-1">
+                    {/* Status Badges */}
+                    <div className="flex items-center gap-2 mb-3 flex-wrap">
+                      <Badge
+                        variant={
+                          product.status === "Live"
+                            ? "default"
+                            : product.status === "Available"
+                              ? "secondary"
+                              : "outline"
+                        }
+                        className="text-xs"
+                      >
+                        {product.status}
+                      </Badge>
+                      <span className="text-xs text-muted-foreground">{product.category}</span>
                     </div>
 
-                    {/* Price and CTA */}
-                    <div className="flex items-center justify-between pt-6 border-t border-border/50 animate-slide-up" style={{ animationDelay: `${index * 150 + 300}ms` }}>
+                    {/* Title */}
+                    <div className="mb-3">
+                      <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                        {product.title}
+                      </h3>
+                      {product.subtitle && <p className="text-xs text-muted-foreground mt-1">{product.subtitle}</p>}
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-3 leading-relaxed">
+                      {product.description}
+                    </p>
+
+                    {/* Features - Compact */}
+                    <div className="mb-4 space-y-1">
+                      {product.features.slice(0, 2).map((feature, idx) => (
+                        <p key={idx} className="text-xs text-muted-foreground flex items-start gap-2">
+                          <span className="text-primary mt-0.5 flex-shrink-0">•</span>
+                          <span className="line-clamp-1">{feature}</span>
+                        </p>
+                      ))}
+                      {product.features.length > 2 && (
+                        <p className="text-xs text-muted-foreground/70 italic">+{product.features.length - 2} more features</p>
+                      )}
+                    </div>
+
+                    {/* Price & CTA */}
+                    <div className="border-t border-border/30 pt-4 space-y-3">
                       <div>
-                        <p className="text-xs text-muted-foreground mb-1">Price</p>
-                        <p className="text-2xl font-bold text-primary">{product.price}</p>
+                        <p className="text-xs text-muted-foreground/70 mb-1">Price</p>
+                        <p className="text-xl font-bold text-primary">{product.price}</p>
                       </div>
 
-                      <div className="flex gap-3">
+                      <div className="flex flex-col gap-2">
                         {product.link && product.status !== "Coming Soon" && (
                           <Link
                             href={product.link}
-                            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-foreground border-2 border-foreground rounded-lg transition-all duration-300 hover:bg-foreground hover:text-background hover:scale-105 active:scale-95"
+                            className="inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium text-foreground border border-foreground rounded-lg transition-all duration-300 hover:bg-foreground hover:text-background active:scale-95"
                           >
                             <ExternalLinkIcon />
                             {product.previewText}
                           </Link>
                         )}
                         {product.status !== "Coming Soon" && product.price !== "Free" ? (
-                          <button className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg hover:scale-105 active:scale-95">
+                          <button className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium text-xs hover:shadow-lg active:scale-95">
                             <ShoppingCartIcon />
                             Buy Now
                           </button>
                         ) : product.status === "Coming Soon" ? (
-                          <button className="inline-flex items-center gap-2 px-6 py-3 bg-muted hover:bg-muted/80 text-foreground rounded-lg transition-all font-medium">
+                          <button className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-muted hover:bg-muted/80 text-foreground rounded-lg transition-all font-medium text-xs">
                             {product.previewText}
                           </button>
                         ) : null}
