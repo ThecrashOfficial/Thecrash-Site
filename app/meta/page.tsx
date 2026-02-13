@@ -221,11 +221,16 @@ export default function MetaPage() {
                             {product.previewText}
                           </Link>
                         )}
-                        {product.status === "Coming Soon" && (
+                        {product.status !== "Coming Soon" && product.price !== "Free" ? (
+                          <button className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg hover:scale-105 active:scale-95">
+                            <ShoppingCartIcon />
+                            Buy Now
+                          </button>
+                        ) : product.status === "Coming Soon" ? (
                           <button className="inline-flex items-center gap-2 px-6 py-3 bg-muted hover:bg-muted/80 text-foreground rounded-lg transition-all font-medium">
                             {product.previewText}
                           </button>
-                        )}
+                        ) : null}
                       </div>
                     </div>
                   </div>
