@@ -6,6 +6,17 @@ import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { useState } from "react"
 
+const CopyIcon = () => (
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+    />
+  </svg>
+)
+
 const DownloadIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
@@ -13,6 +24,17 @@ const DownloadIcon = () => (
       strokeLinejoin="round"
       strokeWidth={2}
       d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+    />
+  </svg>
+)
+
+const ExternalLinkIcon = () => (
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
     />
   </svg>
 )
@@ -28,7 +50,13 @@ const ShoppingCartIcon = () => (
   </svg>
 )
 
-const storeItems = [
+const TelegramIcon = () => (
+  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 8.5l-1.5 7c-.1.6-.6 1-1.1 1-.4 0-.8-.2-1-.5l-2.5-2-1.3 1.3c-.1.1-.3.2-.5.2-.4 0-.8-.3-.8-.8v-.5l3.2-4 .4-.5-3 2-2.8-2.2c-.2-.2-.3-.5-.3-.8 0-.7.8-1.2 1.5-1l6.5 2.5c.5.2.8.7.8 1.3z" />
+  </svg>
+)
+
+const marketplaceItems = [
   // Free Resources
   {
     id: 1,
@@ -39,7 +67,8 @@ const storeItems = [
     format: "PDF (45 pages)",
     downloads: "2,543",
     type: "free",
-    link: "https://t.me/thecrash_hub",
+    buttonType: "telegram",
+    link: "https://t.me/thecrashOfficial",
   },
   {
     id: 2,
@@ -50,7 +79,8 @@ const storeItems = [
     format: "Guide (30 pages)",
     downloads: "1,234",
     type: "free",
-    link: "https://t.me/thecrash_hub",
+    buttonType: "telegram",
+    link: "https://t.me/thecrashOfficial",
   },
   {
     id: 3,
@@ -61,12 +91,25 @@ const storeItems = [
     format: "PDF (25 pages)",
     downloads: "856",
     type: "free",
-    link: "https://t.me/thecrash_hub",
+    buttonType: "telegram",
+    link: "https://t.me/thecrashOfficial",
+  },
+  {
+    id: 4,
+    title: "50 Quick AI Prompts Collection",
+    description: "50 copy-paste ready AI prompts for productivity, content creation, coding, and problem-solving.",
+    category: "AI & Prompts",
+    price: 0,
+    format: "Prompt Templates",
+    downloads: "5,234",
+    type: "free",
+    buttonType: "copy",
+    link: "#",
   },
 
   // Paid Resources
   {
-    id: 4,
+    id: 5,
     title: "Complete Next.js 16 Masterclass",
     description: "In-depth course covering Next.js 16, App Router, Server Components, and modern full-stack development patterns.",
     category: "Web Development",
@@ -74,10 +117,11 @@ const storeItems = [
     format: "Video Course (12 hours)",
     downloads: "324",
     type: "paid",
+    buttonType: "buy",
     link: "#",
   },
   {
-    id: 5,
+    id: 6,
     title: "AI Automation Business Bundle",
     description: "Complete guide to building and monetizing AI automation products. Includes templates, case studies, and business models.",
     category: "AI & Automation",
@@ -85,54 +129,63 @@ const storeItems = [
     format: "Course + Templates (20 hours)",
     downloads: "156",
     type: "paid",
-    link: "#",
-  },
-  {
-    id: 6,
-    title: "50 AI Prompts for Productivity",
-    description: "Curated collection of 50 AI prompts to boost your productivity. Use with ChatGPT, Claude, or any AI tool.",
-    category: "AI & Prompts",
-    price: 14999,
-    format: "Notion Database",
-    downloads: "432",
-    type: "paid",
+    buttonType: "buy",
     link: "#",
   },
   {
     id: 7,
-    title: "Web Dev Template Collection",
-    description: "Premium collection of 10+ React and Next.js templates ready for production deployment.",
-    category: "Templates",
-    price: 24999,
-    format: "Code Templates",
-    downloads: "212",
+    title: "100 AI Prompts for Business",
+    description: "Premium collection of 100 business-focused AI prompts for marketing, sales, management, and strategy.",
+    category: "AI & Prompts",
+    price: 14999,
+    format: "Prompt Collection",
+    downloads: "432",
     type: "paid",
+    buttonType: "copy",
     link: "#",
   },
   {
     id: 8,
-    title: "Complete Notion OS System",
-    description: "All-in-one Notion operating system including task management, CRM, project tracking, and more.",
+    title: "Premium Notion Template Pack",
+    description: "All-in-one Notion system for project management, CRM, knowledge base, and task tracking.",
     category: "Productivity",
-    price: 39999,
-    format: "Notion System",
+    price: 24999,
+    format: "Notion Template",
     downloads: "567",
     type: "paid",
+    buttonType: "notion",
+    link: "https://notion.so",
+  },
+  {
+    id: 9,
+    title: "Web Dev Template Collection",
+    description: "Premium collection of 10+ React and Next.js templates ready for production deployment.",
+    category: "Templates",
+    price: 19999,
+    format: "Code Templates",
+    downloads: "212",
+    type: "paid",
+    buttonType: "buy",
     link: "#",
   },
 ]
 
-export default function StorePage() {
+export default function MarketPage() {
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [showFreeOnly, setShowFreeOnly] = useState(false)
 
   const categories = ["All", "AI & Prompts", "Web Development", "AI & Automation", "Templates", "Productivity"]
 
-  let filteredItems = storeItems.filter((item) => {
+  let filteredItems = marketplaceItems.filter((item) => {
     if (showFreeOnly && item.type !== "free") return false
     if (selectedCategory === "All") return true
     return item.category === selectedCategory
   })
+
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text)
+    alert("Copied to clipboard!")
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -142,9 +195,9 @@ export default function StorePage() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="mb-12 animate-slide-up">
-            <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">Store</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">Market</h1>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Browse free and premium resources, templates, and courses to accelerate your journey as a builder and creator.
+              Discover free and premium resources, templates, and courses to accelerate your journey. Everything you need to build, learn, and scale.
             </p>
           </div>
 
@@ -180,72 +233,100 @@ export default function StorePage() {
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
-                {showFreeOnly ? "Showing Free Items" : "All Items"}
+                {showFreeOnly ? "Showing Free Only" : "All Items"}
               </button>
             </div>
           </div>
 
-          {/* Store Items Grid */}
+          {/* Market Items Grid */}
           <div className="grid md:grid-cols-2 gap-6">
             {filteredItems.map((item, index) => (
               <Card
                 key={item.id}
-                className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02] stagger-item p-6 lg:p-8"
+                className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02] stagger-item"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                {/* Type Badge */}
-                <div className="flex items-start justify-between mb-4">
-                  <Badge
-                    variant={item.type === "free" ? "default" : "secondary"}
-                    className="text-xs"
-                  >
-                    {item.type === "free" ? "Free" : "Premium"}
-                  </Badge>
-                  <span className="text-xs text-muted-foreground">{item.downloads} downloads</span>
+                <div className="p-6 lg:p-8 flex flex-col justify-between h-full">
+                  {/* Type Badge */}
+                  <div className="flex items-start justify-between mb-4">
+                    <Badge
+                      variant={item.type === "free" ? "default" : "secondary"}
+                      className="text-xs"
+                    >
+                      {item.type === "free" ? "Free" : "Premium"}
+                    </Badge>
+                    <span className="text-xs text-muted-foreground">{item.downloads} downloads</span>
+                  </div>
+
+                  {/* Title & Category */}
+                  <div className="mb-4 flex-1">
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4">{item.category}</p>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.description}</p>
+
+                    {/* Format */}
+                    <p className="text-xs text-muted-foreground mb-4">{item.format}</p>
+                  </div>
+
+                  {/* Price & Action */}
+                  <div className="border-t border-border/50 pt-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        {item.type === "free" ? (
+                          <p className="text-lg font-bold text-green-500">Free</p>
+                        ) : (
+                          <p className="text-lg font-bold text-foreground">{item.price.toLocaleString()} MMK</p>
+                        )}
+                      </div>
+
+                      {/* Action Button */}
+                      {item.buttonType === "buy" && (
+                        <button className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95">
+                          <ShoppingCartIcon />
+                          Buy Now
+                        </button>
+                      )}
+
+                      {item.buttonType === "copy" && (
+                        <button
+                          onClick={() => handleCopy(item.title)}
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
+                        >
+                          <CopyIcon />
+                          Copy
+                        </button>
+                      )}
+
+                      {item.buttonType === "notion" && (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
+                        >
+                          <ExternalLinkIcon />
+                          Get Template
+                        </a>
+                      )}
+
+                      {item.buttonType === "telegram" && (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
+                        >
+                          <TelegramIcon />
+                          Get on Telegram
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
-
-                {/* Title & Category */}
-                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300 mb-2 line-clamp-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">{item.category}</p>
-
-                {/* Description */}
-                <p className="text-muted-foreground text-sm mb-6 line-clamp-3">{item.description}</p>
-
-                {/* Format */}
-                <p className="text-xs text-muted-foreground mb-6">{item.format}</p>
-
-                {/* Price */}
-                <div className="mb-6">
-                  {item.type === "free" ? (
-                    <p className="text-2xl font-bold text-green-500">Free</p>
-                  ) : (
-                    <p className="text-2xl font-bold text-foreground">{item.price.toLocaleString()} MMK</p>
-                  )}
-                </div>
-
-                {/* Action Button */}
-                <a
-                  href={item.link}
-                  className={`w-full px-4 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
-                    item.type === "free"
-                      ? "bg-muted text-foreground hover:bg-muted/70"
-                      : "bg-primary text-primary-foreground hover:shadow-lg hover:scale-105 active:scale-95"
-                  }`}
-                >
-                  {item.type === "free" ? (
-                    <>
-                      <DownloadIcon />
-                      Get Free
-                    </>
-                  ) : (
-                    <>
-                      <ShoppingCartIcon />
-                      Buy Now
-                    </>
-                  )}
-                </a>
               </Card>
             ))}
           </div>
