@@ -110,7 +110,7 @@ const hubCards = [
     description: "Web Dev, AI & Automation",
     detail: "Tutorials in Myanmar language",
     icon: BookOpenIcon,
-    href: "/learn",
+    href: "/meta",
     color: "from-green-500/20 to-emerald-500/20",
   },
   {
@@ -175,10 +175,10 @@ export default function HomePage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10 animate-slide-up animate-delay-300 px-4">
               <Link
-                href="/learn"
+                href="/meta"
                 className="group px-8 py-4 bg-foreground text-background rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 text-center relative overflow-hidden"
               >
-                <span className="relative z-10">Explore Resources</span>
+                <span className="relative z-10">Explore Meta</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
 
@@ -236,12 +236,14 @@ export default function HomePage() {
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
                 Connect with builders, share knowledge, and grow together
               </p>
-              <Link
-                href="/community"
+              <a
+                href="https://t.me/thecrashOfficial"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block px-8 py-4 bg-foreground text-background rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
               >
                 Join Now
-              </Link>
+              </a>
             </Card>
           </div>
 
