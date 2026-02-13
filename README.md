@@ -1,46 +1,46 @@
 # Thecrash
 
-**Your Personal Workspace Ecosystem for Creators, Builders & Learners**
+**Your Personal Tech Hub for Projects, Learning & AI Mentors**
 
-Thecrash is a modern, Notion-inspired personal workspace platform designed for creators, builders, and learners. Built with Next.js 16 with a clean black-and-white aesthetic, it serves as a central hub for projects, learning resources, digital notes, and community engagement.
+Thecrash is a modern, full-stack personal workspace platform designed for creators, builders, and learners. Built with Next.js 16 with a clean, minimal aesthetic, it serves as a central hub for projects, learning resources, and AI-powered mentorship.
 
 ## Features
 
-### 🏠 Dynamic Homepage
-- Interactive particle effects with cursor-following animations
-- Floating card animations for engaging UI/UX
-- Quick navigation to all ecosystem sections
-- Social proof counter showing community growth
+### 🏠 Homepage
+- Clean, welcoming interface with personal introduction
+- Quick access to all major sections (Meta, Blog, Market, AI Agents)
+- About Me section showcasing your journey and expertise
+- Featured blog posts and resources
+- Community engagement section
 
-### 💼 Projects Showcase
-- **Thecrash** - Your personal workspace ecosystem
-- Detailed project cards with logos, descriptions, and live demo links
-- Project filtering and categorization
-- Portfolio-style layout
+### 💼 Meta (Projects)
+- Portfolio showcase of your projects and works
+- Project categorization and filtering
+- Detailed project cards with descriptions
+- Live demo links and integration examples
 
-### 📚 Learn Space
-**Purpose**: A curated knowledge repository for tutorials, articles, and educational content on web development, AI, automation, and technology.
+### 📚 Blog
+- Tech insights, tutorials, and thought leadership
+- Clean list-based article layout with categories
+- Easy content discovery and navigation
+- Tags for content organization
 
-**What belongs here**:
-- Step-by-step tutorials and guides
-- Technical how-tos and best practices
-- Educational articles with clear learning objectives
-- Code examples and implementations
+### 🤖 AI Mentors
+- 6 specialized AI coaches for different guidance needs:
+  - **Thecrash** - Personal guidance
+  - **Life Coach** - Personal growth & balance
+  - **Financial Coach** - Money & wealth building
+  - **Philosopher** - Wisdom & mindfulness
+  - **Learning Coach** - Learning strategies
+  - **Meta Coach** - Thinking & prompt engineering
+- Real-time chat interface
+- Mobile-optimized conversation experience
+- Dynamic UI changes based on selected mentor
 
-### 🎓 Free Resources
-- **AI Prompt Templates**: Curated prompts for various use cases (MetaStudent, Content Creation Blueprinter, etc.)
-- **Notion Templates**: Pre-built templates for productivity and organization
-- **Downloadable Assets**: Immediate download, no signup required
-- Language: Myanmar language focused for local audience
-
-### 👥 Community
-- Discussion threads and engagement
-- User interactions and forum discussions
-- Community-driven content sharing
-
-### 🤖 AI Assistant (Discontinued)
-- Previously powered by Google Gemini
-- Note: Currently disabled due to API key limitations
+### 🛍️ Market
+- Premium templates and resources
+- Curated tools for builders
+- Easy discovery and purchasing
 
 ## Tech Stack
 
@@ -48,84 +48,128 @@ Thecrash is a modern, Notion-inspired personal workspace platform designed for c
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
 - **UI Components**: shadcn/ui
-- **Theme**: Next-themes with light/dark mode support
-- **Animations**: CSS animations, particle effects, interactive elements
+- **Icons**: Lucide React
+- **Theme**: Next-themes (Light/Dark mode)
+- **Animations**: CSS transitions & animations
 - **Deployment**: Vercel
 
 ## Getting Started
 
 ### Prerequisites
-
 - Node.js 18+
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository:
-\`\`\`bash
+```bash
+# Clone the repository
 git clone https://github.com/Thecrash/thecrash-site.git
 cd thecrash-site
-\`\`\`
 
-2. Install dependencies:
-\`\`\`bash
+# Install dependencies
 npm install
-\`\`\`
 
-3. Run the development server:
-\`\`\`bash
+# Run development server
 npm run dev
-\`\`\`
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+# Open http://localhost:3000
+```
 
-## Features Breakdown
+## Project Structure
 
-### Navigation
-- Clean, responsive navigation with light/dark theme toggle
-- Mobile-friendly hamburger menu
-- Quick access to all sections
+```
+thecrash-site/
+├── app/
+│   ├── page.tsx              # Homepage
+│   ├── agent/page.tsx        # AI Mentors
+│   ├── blog/page.tsx         # Blog articles
+│   ├── meta/page.tsx         # Projects showcase
+│   ├── market/page.tsx       # Premium resources
+│   └── api/chat/route.ts     # AI chat API
+├── components/
+│   ├── navigation.tsx        # Main navigation
+│   ├── blog-card.tsx         # Blog post card
+│   ├── ui/                   # shadcn components
+│   └── [other components]
+├── public/                   # Static assets & logos
+└── styles/                   # Global CSS
+```
 
-### Homepage Sections
-1. **Hub Cards** - Projects, Learn, Resources, Community
-2. **Featured Resources** - Curated prompts and templates
-3. **Interactive Elements** - Particle effects, animations, engaging UI
+## Key Pages
 
-### Responsive Design
-- Mobile-first approach
-- Optimized for all screen sizes
-- Touch-friendly interactions
-- Smooth animations and transitions
+### Homepage (`/`)
+- Hero section with call-to-action buttons
+- About Me card with professional introduction
+- Featured projects from Meta
+- Latest blog posts preview
+- AI Mentors quick access
+- Community engagement section
+
+### AI Mentors (`/agent`)
+- Responsive mentor selector
+- Real-time chat interface
+- Mentor-specific color schemes
+- Mobile-optimized layout with minimal UI
+- Horizontal scrolling mentor list on mobile
+
+### Blog (`/blog`)
+- Minimal list-based layout
+- Floating card effects
+- Category badges
+- Read time indicators
+- Easy navigation to full articles
+
+### Meta (`/meta`)
+- Portfolio-style project showcase
+- Project details and descriptions
+- Filter and categorization system
+- Live links to projects
 
 ## Design Philosophy
 
-Thecrash follows a **Notion-inspired black and white aesthetic** with:
-- Pure black backgrounds (#000000)
-- White text and accents (#FFFFFF)
-- Gray tones for secondary content
-- Minimal, clean layouts
-- Smooth animations and transitions
+Thecrash embraces a **modern, minimal aesthetic**:
+- Clean typography and spacing
+- Dark/Light theme support
+- Smooth transitions and animations
+- Mobile-first responsive design
 - Floating card effects for depth
-- Interactive particle systems
-- Light/Dark mode support
+- Semantic HTML with proper accessibility
+- Inclusive color scheme with good contrast
+
+## Performance
+
+- Server-side rendering for fast initial loads
+- Optimized image handling
+- Responsive images with proper sizing
+- Minimal CSS footprint with Tailwind
+- Smooth animations without jank
+
+## Features to Explore
+
+- **Theme Toggle**: Switch between light and dark modes (top navigation)
+- **Responsive Design**: Try resizing or viewing on mobile
+- **AI Chat**: Test the AI mentors with various questions
+- **Blog Navigation**: Browse recent tech articles
+- **Project Showcase**: View the Meta projects collection
+- **Community**: Connect via social links
 
 ## Author
 
 **Pyae Sone Phyo (Thecrash)**
-- Age: 20
+- Builder & Creator
+- Focus: Web Development, AI Automation, Tech Education
 - Location: Myanmar
-- Role: Builder, Creator, Entrepreneur
-- Focus: AI Automation, Web Development, Content Creation
+- Mission: Empowering Myanmar's tech ecosystem
 
 ### Connect
-- GitHub: [@Thecrash](https://github.com/Thecrash)
-- YouTube: [Crash Hub](https://youtube.com/@crashhub)
-- Vision: Building digital solutions for the Myanmar startup ecosystem
+- GitHub: [@sonesone222006](https://github.com/sonesone222006)
+- Telegram: [@thecrashOfficial](https://t.me/thecrashOfficial)
+- Website: [thecrash.me](https://thecrash.me)
 
 ## License
 
-This project is open source and available under the MIT License.
+MIT License - Feel free to use this project as inspiration for your own!
 
 ---
 
-**Thecrash** - Where creativity, connection, and learning converge.
+**Thecrash** - Where ideas, learning, and community converge.
