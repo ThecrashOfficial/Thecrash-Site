@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const RobotIcon = () => (
   <svg 
@@ -13,6 +14,13 @@ const RobotIcon = () => (
 )
 
 export function AIChatWidget() {
+  const pathname = usePathname()
+  const isOnAgentPage = pathname === "/agent"
+
+  if (isOnAgentPage) {
+    return null
+  }
+
   return (
     <Link
       href="/agent"
@@ -33,6 +41,5 @@ export function AIChatWidget() {
         </svg>
       </span>
     </Link>
-    // </CHANGE>
   )
 }
