@@ -11,6 +11,36 @@ const ArrowRightIcon = () => (
   </svg>
 )
 
+const ProjectsIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7 12a5 5 0 1110 0 5 5 0 01-10 0z" />
+  </svg>
+)
+
+const BlogIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2v-5.5a2.972 2.972 0 002-2.5A2.972 2.972 0 0019 7.5" />
+  </svg>
+)
+
+const MarketIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+  </svg>
+)
+
+const BotIcon = () => (
+  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+)
+
+const AboutMeIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+  </svg>
+)
+
 const blogPosts = [
   {
     id: 1,
@@ -45,7 +75,7 @@ const hubCards = [
   {
     title: "Meta",
     description: "Web Dev, AI & Automation",
-    detail: "Tutorials in Myanmar language",
+    detail: "Portfolio & Projects",
     href: "/meta",
     color: "from-green-500/20 to-emerald-500/20",
   },
@@ -123,9 +153,11 @@ export default function HomePage() {
           <section className="max-w-4xl mx-auto animate-slide-up" style={{ animationDelay: "100ms" }}>
             <Card className="p-8 sm:p-12 border-2 border-border/50 bg-gradient-to-br from-card to-card/50">
               <div className="space-y-8">
-                {/* About Header */}
+                {/* About Me Header */}
                 <div className="flex items-start gap-4 sm:gap-6">
-                  <div className="text-3xl sm:text-4xl">👨‍💻</div>
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <AboutMeIcon />
+                  </div>
                   <div className="flex-1">
                     <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
                       About Me
@@ -189,8 +221,8 @@ export default function HomePage() {
                 <Link key={card.href} href={card.href}>
                   <Card className="group relative p-8 hover:shadow-2xl transition-all duration-500 border-2 border-border h-full hover:scale-[1.02]">
                     <div className="space-y-4">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${card.color} flex items-center justify-center text-2xl`}>
-                        {card.title === "Meta" ? "📚" : card.title === "Blog" ? "📝" : "🛍️"}
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${card.color} flex items-center justify-center`}>
+                        {card.title === "Meta" ? <ProjectsIcon /> : card.title === "Blog" ? <BlogIcon /> : <MarketIcon />}
                       </div>
                       <div>
                         <h3 className="text-xl font-bold text-foreground">{card.title}</h3>
@@ -221,7 +253,9 @@ export default function HomePage() {
                 <div className="flex items-center justify-between gap-6">
                   <div className="space-y-3 flex-1">
                     <div className="flex items-center gap-3">
-                      <span className="text-4xl">🤖</span>
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <BotIcon />
+                      </div>
                       <div>
                         <h3 className="text-2xl font-bold text-foreground">6 Specialized Mentors</h3>
                         <p className="text-sm text-muted-foreground mt-1">Life, Finance, Learning, Philosophy & More</p>
