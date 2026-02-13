@@ -186,31 +186,6 @@ export default function AgentPage() {
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mb-8">
               Get personalized guidance from expert AI mentors. Choose your specialist and start a conversation tailored to your needs.
             </p>
-
-            {/* Capability Stats */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl">
-              <div className="bg-card/50 backdrop-blur border border-border/50 rounded-lg p-4 sm:p-5">
-                <div className="flex items-center gap-3 mb-2">
-                  <Zap className="w-5 h-5 text-yellow-500" />
-                  <p className="text-sm text-muted-foreground">Instant Responses</p>
-                </div>
-                <p className="text-2xl font-bold text-foreground">Real-time</p>
-              </div>
-              <div className="bg-card/50 backdrop-blur border border-border/50 rounded-lg p-4 sm:p-5">
-                <div className="flex items-center gap-3 mb-2">
-                  <Brain className="w-5 h-5 text-purple-500" />
-                  <p className="text-sm text-muted-foreground">AI-Powered</p>
-                </div>
-                <p className="text-2xl font-bold text-foreground">Advanced</p>
-              </div>
-              <div className="bg-card/50 backdrop-blur border border-border/50 rounded-lg p-4 sm:p-5">
-                <div className="flex items-center gap-3 mb-2">
-                  <Target className="w-5 h-5 text-blue-500" />
-                  <p className="text-sm text-muted-foreground">Personalized</p>
-                </div>
-                <p className="text-2xl font-bold text-foreground">Guidance</p>
-              </div>
-            </div>
           </div>
 
           <div className="space-y-4">
