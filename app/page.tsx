@@ -41,36 +41,6 @@ const AboutMeIcon = () => (
   </svg>
 )
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "The Future of AI Agents",
-    excerpt: "Exploring how autonomous AI agents will reshape software development and business.",
-    date: "Feb 13, 2025",
-    category: "AI & Automation",
-    readTime: "8 min read",
-    slug: "future-of-ai-agents",
-  },
-  {
-    id: 2,
-    title: "Why Builders Should Think in Systems",
-    excerpt: "Learn how systems thinking transforms product development and creates powerful outcomes.",
-    date: "Feb 10, 2025",
-    category: "Strategy",
-    readTime: "6 min read",
-    slug: "systems-thinking-builders",
-  },
-  {
-    id: 3,
-    title: "Monetizing Digital Intelligence",
-    excerpt: "A practical guide to turning AI capabilities into revenue streams and building profitable products.",
-    date: "Feb 5, 2025",
-    category: "Business",
-    readTime: "10 min read",
-    slug: "monetizing-digital-intelligence",
-  },
-]
-
 const hubCards = [
   {
     title: "Meta",
@@ -273,51 +243,7 @@ export default function HomePage() {
             </Link>
           </section>
 
-          {/* 5. Latest Blog Posts */}
-          <section className="max-w-4xl mx-auto animate-slide-up" style={{ animationDelay: "400ms" }}>
-            <div className="mb-10 flex items-center justify-between">
-              <div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">Latest Articles</h2>
-                <p className="text-muted-foreground">Recent thoughts on tech, business & building</p>
-              </div>
-              <Link href="/blog" className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors hidden sm:block">
-                View All
-              </Link>
-            </div>
-            <div className="space-y-4">
-              {blogPosts.map((post) => (
-                <Link key={post.id} href={`/blog/${post.slug}`}>
-                  <div className="group border border-border/40 rounded-lg p-5 transition-all duration-300 hover:border-primary/50 hover:bg-card/30 hover:shadow-md hover:-translate-y-1 bg-card/20 backdrop-blur-sm shadow-sm">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
-                          {post.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-3 line-clamp-2 leading-relaxed">
-                          {post.excerpt}
-                        </p>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <Badge variant="secondary" className="text-xs">
-                            {post.category}
-                          </Badge>
-                          <span className="text-xs text-muted-foreground">•</span>
-                          <span className="text-xs text-muted-foreground">{post.readTime}</span>
-                        </div>
-                      </div>
-                      <div className="w-8 h-8 rounded-full bg-muted/50 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-all mt-1">
-                        <ArrowRightIcon />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-              <Link href="/blog" className="inline-block text-sm font-semibold text-primary hover:text-primary/80 transition-colors sm:hidden mt-4">
-                View All Articles
-              </Link>
-            </div>
-          </section>
-
-          {/* 6. Market CTA (Optional) */}
+          {/* 5. Market CTA (Optional) */}
           <section className="max-w-4xl mx-auto animate-slide-up" style={{ animationDelay: "500ms" }}>
             <Link href="/market">
               <Card className="p-8 sm:p-12 text-center border-2 border-border/50 bg-gradient-to-br from-muted/30 to-background hover:border-primary/50 hover:shadow-xl transition-all cursor-pointer group">
