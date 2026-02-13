@@ -172,15 +172,19 @@ const marketplaceItems = [
 
 export default function MarketPage() {
   const [selectedCategory, setSelectedCategory] = useState("All")
-  const [showFreeOnly, setShowFreeOnly] = useState(false)
 
   const categories = ["All", "AI & Prompts", "Web Development", "AI & Automation", "Templates", "Productivity"]
 
-  let filteredItems = marketplaceItems.filter((item) => {
-    if (showFreeOnly && item.type !== "free") return false
-    if (selectedCategory === "All") return true
-    return item.category === selectedCategory
-  })
+  const freeItems = marketplaceItems.filter((item) => item.type === "free")
+  const paidItems = marketplaceItems.filter((item) => item.type === "paid")
+
+  const filterItemsByCategory = (items) => {
+    if (selectedCategory === "All") return items
+    return items.filter((item) => item.category === selectedCategory)
+  }
+
+  const filteredFreeItems = filterItemsByCategory(freeItems)
+  const filteredPaidItems = filterItemsByCategory(paidItems)
 
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text)
@@ -201,138 +205,179 @@ export default function MarketPage() {
             </p>
           </div>
 
-          {/* Filters */}
-          <div className="mb-12 space-y-6 animate-slide-up">
-            {/* Category Filter */}
-            <div>
-              <h3 className="text-sm font-semibold text-foreground mb-3">Categories</h3>
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                      selectedCategory === category
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground hover:bg-muted/80"
-                    }`}
+          {/* Category Filter */}
+          <div className="mb-12 animate-slide-up">
+            <h3 className="text-sm font-semibold text-foreground mb-3">Filter by Category</h3>
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                    selectedCategory === category
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-muted-foreground hover:bg-muted/80"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Free Resources Section */}
+          {filteredFreeItems.length > 0 && (
+            <div className="mb-16">
+              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+                <span className="w-1 h-8 bg-green-500 rounded-full"></span>
+                Free Resources
+              </h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                {filteredFreeItems.map((item, index) => (
+                  <Card
+                    key={item.id}
+                    className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02] stagger-item"
+                    style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    {category}
-                  </button>
+                    <div className="p-6 lg:p-8 flex flex-col justify-between h-full">
+                      {/* Type Badge */}
+                      <div className="flex items-start justify-between mb-4">
+                        <Badge variant="default" className="text-xs bg-green-500 hover:bg-green-600">
+                          Free
+                        </Badge>
+                        <span className="text-xs text-muted-foreground">{item.downloads} downloads</span>
+                      </div>
+
+                      {/* Title & Category */}
+                      <div className="mb-4 flex-1">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-4">{item.category}</p>
+
+                        {/* Description */}
+                        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.description}</p>
+
+                        {/* Format */}
+                        <p className="text-xs text-muted-foreground mb-4">{item.format}</p>
+                      </div>
+
+                      {/* Price & Action */}
+                      <div className="border-t border-border/50 pt-4">
+                        <div className="flex items-center justify-between">
+                          <p className="text-lg font-bold text-green-500">Free</p>
+
+                          {item.buttonType === "copy" && (
+                            <button
+                              onClick={() => handleCopy(item.title)}
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
+                            >
+                              <CopyIcon />
+                              Copy
+                            </button>
+                          )}
+
+                          {item.buttonType === "telegram" && (
+                            <a
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
+                            >
+                              <TelegramIcon />
+                              Get on Telegram
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
                 ))}
               </div>
             </div>
+          )}
 
-            {/* Free/Paid Toggle */}
+          {/* Paid Resources Section */}
+          {filteredPaidItems.length > 0 && (
             <div>
-              <button
-                onClick={() => setShowFreeOnly(!showFreeOnly)}
-                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                  showFreeOnly
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:bg-muted/80"
-                }`}
-              >
-                {showFreeOnly ? "Showing Free Only" : "All Items"}
-              </button>
-            </div>
-          </div>
-
-          {/* Market Items Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {filteredItems.map((item, index) => (
-              <Card
-                key={item.id}
-                className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02] stagger-item"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="p-6 lg:p-8 flex flex-col justify-between h-full">
-                  {/* Type Badge */}
-                  <div className="flex items-start justify-between mb-4">
-                    <Badge
-                      variant={item.type === "free" ? "default" : "secondary"}
-                      className="text-xs"
-                    >
-                      {item.type === "free" ? "Free" : "Premium"}
-                    </Badge>
-                    <span className="text-xs text-muted-foreground">{item.downloads} downloads</span>
-                  </div>
-
-                  {/* Title & Category */}
-                  <div className="mb-4 flex-1">
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-4">{item.category}</p>
-
-                    {/* Description */}
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.description}</p>
-
-                    {/* Format */}
-                    <p className="text-xs text-muted-foreground mb-4">{item.format}</p>
-                  </div>
-
-                  {/* Price & Action */}
-                  <div className="border-t border-border/50 pt-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        {item.type === "free" ? (
-                          <p className="text-lg font-bold text-green-500">Free</p>
-                        ) : (
-                          <p className="text-lg font-bold text-foreground">{item.price.toLocaleString()} MMK</p>
-                        )}
+              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+                <span className="w-1 h-8 bg-primary rounded-full"></span>
+                Premium Resources
+              </h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                {filteredPaidItems.map((item, index) => (
+                  <Card
+                    key={item.id}
+                    className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02] stagger-item"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="p-6 lg:p-8 flex flex-col justify-between h-full">
+                      {/* Type Badge */}
+                      <div className="flex items-start justify-between mb-4">
+                        <Badge variant="secondary" className="text-xs">
+                          Premium
+                        </Badge>
+                        <span className="text-xs text-muted-foreground">{item.downloads} downloads</span>
                       </div>
 
-                      {/* Action Button */}
-                      {item.buttonType === "buy" && (
-                        <button className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95">
-                          <ShoppingCartIcon />
-                          Buy Now
-                        </button>
-                      )}
+                      {/* Title & Category */}
+                      <div className="mb-4 flex-1">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-4">{item.category}</p>
 
-                      {item.buttonType === "copy" && (
-                        <button
-                          onClick={() => handleCopy(item.title)}
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
-                        >
-                          <CopyIcon />
-                          Copy
-                        </button>
-                      )}
+                        {/* Description */}
+                        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.description}</p>
 
-                      {item.buttonType === "notion" && (
-                        <a
-                          href={item.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
-                        >
-                          <ExternalLinkIcon />
-                          Get Template
-                        </a>
-                      )}
+                        {/* Format */}
+                        <p className="text-xs text-muted-foreground mb-4">{item.format}</p>
+                      </div>
 
-                      {item.buttonType === "telegram" && (
-                        <a
-                          href={item.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
-                        >
-                          <TelegramIcon />
-                          Get on Telegram
-                        </a>
-                      )}
+                      {/* Price & Action */}
+                      <div className="border-t border-border/50 pt-4">
+                        <div className="flex items-center justify-between">
+                          <p className="text-lg font-bold text-foreground">{item.price.toLocaleString()} MMK</p>
+
+                          {item.buttonType === "buy" && (
+                            <button className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95">
+                              <ShoppingCartIcon />
+                              Buy Now
+                            </button>
+                          )}
+
+                          {item.buttonType === "copy" && (
+                            <button
+                              onClick={() => handleCopy(item.title)}
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
+                            >
+                              <CopyIcon />
+                              Copy
+                            </button>
+                          )}
+
+                          {item.buttonType === "notion" && (
+                            <a
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
+                            >
+                              <ExternalLinkIcon />
+                              Get Template
+                            </a>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Empty State */}
-          {filteredItems.length === 0 && (
+          {filteredFreeItems.length === 0 && filteredPaidItems.length === 0 && (
             <div className="text-center py-12">
               <p className="text-muted-foreground text-lg">No items found matching your filters.</p>
             </div>
