@@ -13,63 +13,13 @@ const ArrowRightIcon = () => (
 const posts = [
   {
     id: 1,
-    title: "The Future of AI Agents",
+    title: "၂၀၂၄ မှ ၂၀၂၆ အတွင်း ပြောင်းလဲခဲ့သော AI အပေါ် အမြင်",
     excerpt:
-      "Exploring how autonomous AI agents will reshape software development, businesses, and how we work. The shift from tools to intelligent assistants is just beginning.",
-    date: "Feb 13, 2025",
-    category: "AI & Automation",
-    readTime: "8 min read",
-    slug: "future-of-ai-agents",
-  },
-  {
-    id: 2,
-    title: "Why Builders Should Think in Systems",
-    excerpt:
-      "Learn how systems thinking transforms product development. Instead of building features in isolation, understand how interconnected components create powerful outcomes.",
-    date: "Feb 10, 2025",
-    category: "Strategy",
-    readTime: "6 min read",
-    slug: "systems-thinking-builders",
-  },
-  {
-    id: 3,
-    title: "Monetizing Digital Intelligence",
-    excerpt:
-      "A practical guide to turning AI capabilities into revenue streams. From SaaS to AI agents, explore proven monetization strategies for the AI era.",
-    date: "Feb 5, 2025",
-    category: "Business",
-    readTime: "10 min read",
-    slug: "monetizing-digital-intelligence",
-  },
-  {
-    id: 4,
-    title: "From Tools to Infrastructure: The AI Shift",
-    excerpt:
-      "The next wave isn't about better AI tools—it's about AI infrastructure. Discover how this shift creates new opportunities for builders and entrepreneurs.",
-    date: "Jan 28, 2025",
-    category: "Technology",
-    readTime: "7 min read",
-    slug: "tools-to-infrastructure-ai",
-  },
-  {
-    id: 5,
-    title: "Building in Public: Lessons from 2024",
-    excerpt:
-      "Reflecting on what I learned by building and sharing projects publicly. The transparency, community feedback, and opportunities that emerged changed everything.",
-    date: "Jan 20, 2025",
-    category: "Entrepreneurship",
-    readTime: "9 min read",
-    slug: "building-in-public-2024",
-  },
-  {
-    id: 6,
-    title: "The Art of Shipping Fast",
-    excerpt:
-      "Why speed matters more than perfection. A framework for building, launching, and iterating quickly while maintaining quality and user satisfaction.",
-    date: "Jan 12, 2025",
-    category: "Development",
-    readTime: "5 min read",
-    slug: "art-of-shipping-fast",
+      "AI နည်းပညာ မြှင့်လာတဲ့ အမျှ ကျွန်တော်အတွက် access လုပ်ရတာ ပိုလွယ်လာခဲ့တယ်။ အရင်ကတော့ AI နဲ့ အလုပ်မဖြစ်တာတွေ များခဲ့ပေမယ့် အခုနောက်ပိုင်း တော်တော်များများ အလုပ်ဖြစ်လာခဲ့တယ်။",
+    date: "Feb 13, 2026",
+    category: "AI & Perspectives",
+    readTime: "12 min read",
+    slug: "ai-perspectives-2024-2026",
   },
 ]
 
