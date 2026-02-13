@@ -104,14 +104,10 @@ const suggestedPrompts = {
 }
 
 const capabilities = [
-  { label: "Specialized Mentors", value: "6", icon: Users },
-  { label: "Instant Responses", value: "Real-time", icon: Zap },
-  { label: "Personalized Guidance", value: "AI-Powered", icon: Brain },
+  { label: "Specialized Mentors", value: "6", icon: "Users" },
+  { label: "Instant Responses", value: "Real-time", icon: "Zap" },
+  { label: "Personalized Guidance", value: "AI-Powered", icon: "Brain" },
 ]
-
-function Users() {
-  return <User className="w-5 h-5" />
-}
 
 export default function AgentPage() {
   const [messages, setMessages] = useState<Array<{ role: string; content: string }>>([])
