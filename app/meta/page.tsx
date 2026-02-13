@@ -138,9 +138,9 @@ export default function MetaPage() {
                 className={`overflow-hidden border-border bg-card group transition-all duration-500 hover:shadow-2xl hover:border-primary/50 hover:scale-[1.01]`}
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className={`grid md:grid-cols-[280px_1fr] gap-0 ${index % 2 === 1 ? "md:[direction:rtl]" : ""}`}>
+                <div className={`grid gap-0 ${index % 2 === 0 ? "md:grid-cols-[280px_1fr]" : "md:grid-cols-[1fr_280px]"}`}>
                   {/* Product Image/Logo */}
-                  <div className={`relative aspect-square md:aspect-auto overflow-hidden bg-muted flex items-center justify-center p-8 transition-all duration-500 group-hover:bg-muted/70 ${index % 2 === 1 ? "md:[direction:ltr] md:order-2" : ""}`}>
+                  <div className={`relative aspect-square md:aspect-auto overflow-hidden bg-muted flex items-center justify-center p-8 transition-all duration-500 group-hover:bg-muted/70 ${index % 2 === 1 ? "md:order-2" : ""}`}>
                     {product.logo && (
                       <Image
                         src={product.logo}
@@ -153,7 +153,7 @@ export default function MetaPage() {
                   </div>
 
                   {/* Product Details */}
-                  <div className={`p-8 lg:p-12 flex flex-col justify-between ${index % 2 === 1 ? "md:[direction:ltr]" : ""}`}>
+                  <div className="p-8 lg:p-12 flex flex-col justify-between">
                     <div>
                       {/* Header with Badges */}
                       <div className="flex items-center gap-3 mb-4 flex-wrap animate-slide-up" style={{ animationDelay: `${index * 150 + 100}ms` }}>
