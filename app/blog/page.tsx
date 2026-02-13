@@ -18,7 +18,7 @@ const posts = [
       "AI နည်းပညာ မြှင့်လာတဲ့ အမျှ ကျွန်တော်အတွက် access လုပ်ရတာ ပိုလွယ်လာခဲ့တယ်။ အရင်ကတော့ AI နဲ့ အလုပ်မဖြစ်တာတွေ များခဲ့ပေမယ့် အခုနောက်ပိုင်း တော်တော်များများ အလုပ်ဖြစ်လာခဲ့တယ်။",
     date: "Feb 13, 2026",
     category: "AI & Perspectives",
-    readTime: "12 min read",
+    readTime: "3 min read",
     slug: "ai-perspectives-2024-2026",
   },
 ]
