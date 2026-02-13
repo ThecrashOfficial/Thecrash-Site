@@ -70,7 +70,7 @@ const storeItems = [
     title: "Complete Next.js 16 Masterclass",
     description: "In-depth course covering Next.js 16, App Router, Server Components, and modern full-stack development patterns.",
     category: "Web Development",
-    price: 49.99,
+    price: 49999,
     format: "Video Course (12 hours)",
     downloads: "324",
     type: "paid",
@@ -81,7 +81,7 @@ const storeItems = [
     title: "AI Automation Business Bundle",
     description: "Complete guide to building and monetizing AI automation products. Includes templates, case studies, and business models.",
     category: "AI & Automation",
-    price: 99.99,
+    price: 99999,
     format: "Course + Templates (20 hours)",
     downloads: "156",
     type: "paid",
@@ -92,7 +92,7 @@ const storeItems = [
     title: "50 AI Prompts for Productivity",
     description: "Curated collection of 50 AI prompts to boost your productivity. Use with ChatGPT, Claude, or any AI tool.",
     category: "AI & Prompts",
-    price: 14.99,
+    price: 14999,
     format: "Notion Database",
     downloads: "432",
     type: "paid",
@@ -103,7 +103,7 @@ const storeItems = [
     title: "Web Dev Template Collection",
     description: "Premium collection of 10+ React and Next.js templates ready for production deployment.",
     category: "Templates",
-    price: 24.99,
+    price: 24999,
     format: "Code Templates",
     downloads: "212",
     type: "paid",
@@ -114,7 +114,7 @@ const storeItems = [
     title: "Complete Notion OS System",
     description: "All-in-one Notion operating system including task management, CRM, project tracking, and more.",
     category: "Productivity",
-    price: 39.99,
+    price: 39999,
     format: "Notion System",
     downloads: "567",
     type: "paid",
@@ -221,7 +221,7 @@ export default function StorePage() {
                   {item.type === "free" ? (
                     <p className="text-2xl font-bold text-green-500">Free</p>
                   ) : (
-                    <p className="text-2xl font-bold text-foreground">${item.price.toFixed(2)}</p>
+                    <p className="text-2xl font-bold text-foreground">{item.price.toLocaleString()} MMK</p>
                   )}
                 </div>
 

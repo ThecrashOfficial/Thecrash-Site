@@ -4,6 +4,7 @@ import { Navigation } from "@/components/navigation"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 
 const ArrowRightIcon = () => (
@@ -18,6 +19,7 @@ const posts = [
     title: "The Future of AI Agents",
     excerpt:
       "Exploring how autonomous AI agents will reshape software development, businesses, and how we work. The shift from tools to intelligent assistants is just beginning.",
+    image: "/placeholder.jpg",
     date: "Feb 13, 2025",
     category: "AI & Automation",
     readTime: "8 min read",
@@ -28,6 +30,7 @@ const posts = [
     title: "Why Builders Should Think in Systems",
     excerpt:
       "Learn how systems thinking transforms product development. Instead of building features in isolation, understand how interconnected components create powerful outcomes.",
+    image: "/placeholder-user.jpg",
     date: "Feb 10, 2025",
     category: "Strategy",
     readTime: "6 min read",
@@ -38,6 +41,7 @@ const posts = [
     title: "Monetizing Digital Intelligence",
     excerpt:
       "A practical guide to turning AI capabilities into revenue streams. From SaaS to AI agents, explore proven monetization strategies for the AI era.",
+    image: "/placeholder.jpg",
     date: "Feb 5, 2025",
     category: "Business",
     readTime: "10 min read",
@@ -48,6 +52,7 @@ const posts = [
     title: "From Tools to Infrastructure: The AI Shift",
     excerpt:
       "The next wave isn't about better AI tools—it's about AI infrastructure. Discover how this shift creates new opportunities for builders and entrepreneurs.",
+    image: "/placeholder-user.jpg",
     date: "Jan 28, 2025",
     category: "Technology",
     readTime: "7 min read",
@@ -58,6 +63,7 @@ const posts = [
     title: "Building in Public: Lessons from 2024",
     excerpt:
       "Reflecting on what I learned by building and sharing projects publicly. The transparency, community feedback, and opportunities that emerged changed everything.",
+    image: "/placeholder.jpg",
     date: "Jan 20, 2025",
     category: "Entrepreneurship",
     readTime: "9 min read",
@@ -68,6 +74,7 @@ const posts = [
     title: "The Art of Shipping Fast",
     excerpt:
       "Why speed matters more than perfection. A framework for building, launching, and iterating quickly while maintaining quality and user satisfaction.",
+    image: "/placeholder-user.jpg",
     date: "Jan 12, 2025",
     category: "Development",
     readTime: "5 min read",
@@ -120,30 +127,44 @@ export default function BlogPage() {
           <div className="space-y-6 animate-slide-up" style={{ animationDelay: "200ms" }}>
             {filteredPosts.map((post, index) => (
               <Link key={post.id} href={`/blog/${post.slug}`}>
-                <Card className="p-8 border-border bg-card group transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:scale-[1.01] cursor-pointer" style={{ animationDelay: `${250 + index * 75}ms` }}>
-                  <div className="flex items-start justify-between gap-4 mb-4">
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-3 flex-wrap">
-                        <Badge variant="secondary" className="text-xs">
-                          {post.category}
-                        </Badge>
-                        <span className="text-xs text-muted-foreground">•</span>
-                        <span className="text-xs text-muted-foreground">{post.readTime}</span>
+                <Card className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:scale-[1.01] cursor-pointer" style={{ animationDelay: `${250 + index * 75}ms` }}>
+                  <div className="grid md:grid-cols-3 gap-0">
+                    {/* Image Section */}
+                    <div className="relative aspect-video md:aspect-auto overflow-hidden bg-muted">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="p-6 md:col-span-2 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center gap-2 mb-3 flex-wrap">
+                          <Badge variant="secondary" className="text-xs">
+                            {post.category}
+                          </Badge>
+                          <span className="text-xs text-muted-foreground">•</span>
+                          <span className="text-xs text-muted-foreground">{post.readTime}</span>
+                        </div>
+
+                        <h2 className="text-xl lg:text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors mb-3 line-clamp-2">
+                          {post.title}
+                        </h2>
+
+                        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">{post.excerpt}</p>
                       </div>
 
-                      <h2 className="text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors mb-3 line-clamp-2">
-                        {post.title}
-                      </h2>
-
-                      <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-4">{post.excerpt}</p>
-                    </div>
-
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <ArrowRightIcon />
+                      <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/50">
+                        <span className="text-xs text-muted-foreground">{post.date}</span>
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                          <ArrowRightIcon />
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                  <span className="text-xs text-muted-foreground">{post.date}</span>
                 </Card>
               </Link>
             ))}
