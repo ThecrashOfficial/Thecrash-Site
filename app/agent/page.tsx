@@ -3,7 +3,7 @@
 import { Navigation } from "@/components/navigation"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Send, User, Menu, X } from "lucide-react"
+import { Send, User, Menu, X, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 
 const mentors = [
@@ -18,19 +18,31 @@ const mentors = [
 export default function AgentPage() {
   const [messages, setMessages] = useState<Array<{ role: string; content: string }>>([])
   const [input, setInput] = useState("")
-  const [selectedMentor, setSelectedMentor] = useState(mentors[0])
+  const [selectedMentorIndex, setSelectedMentorIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  const selectedMentor = mentors[selectedMentorIndex]
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
-  const handleMentorChange = (mentor: typeof mentors[0]) => {
-    setSelectedMentor(mentor)
+  const handleMentorChange = (index: number) => {
+    setSelectedMentorIndex(index)
     setMessages([])
     setSidebarOpen(false)
+  }
+
+  const handleNextMentor = () => {
+    setSelectedMentorIndex((prev) => (prev + 1) % mentors.length)
+    setMessages([])
+  }
+
+  const handlePrevMentor = () => {
+    setSelectedMentorIndex((prev) => (prev - 1 + mentors.length) % mentors.length)
+    setMessages([])
   }
 
   const handleSend = async () => {
@@ -72,33 +84,23 @@ export default function AgentPage() {
       <Navigation />
       
       <main className="flex-1 flex overflow-hidden">
-        {/* Sidebar */}
+        {/* Desktop Sidebar */}
         <div
-          className={`fixed sm:static inset-y-0 left-0 w-64 bg-card border-r border-border transform transition-transform duration-300 ease-in-out flex flex-col z-40 ${
-            sidebarOpen ? "translate-x-0" : "-translate-x-full sm:translate-x-0"
-          }`}
+          className={`hidden sm:flex sm:w-64 bg-card border-r border-border flex-col z-40`}
         >
           {/* Sidebar Header */}
           <div className="p-4 border-b border-border">
-            <div className="flex items-center justify-between">
-              <h2 className="font-bold text-sm text-foreground">AI Mentors</h2>
-              <button
-                onClick={() => setSidebarOpen(false)}
-                className="sm:hidden text-muted-foreground hover:text-foreground"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+            <h2 className="font-bold text-sm text-foreground">AI Mentors</h2>
           </div>
 
           {/* Mentors List */}
           <div className="flex-1 overflow-y-auto p-2 space-y-1">
-            {mentors.map((mentor) => (
+            {mentors.map((mentor, idx) => (
               <button
                 key={mentor.name}
-                onClick={() => handleMentorChange(mentor)}
+                onClick={() => handleMentorChange(idx)}
                 className={`w-full text-left px-3 py-2 rounded-lg transition-all text-sm font-medium ${
-                  selectedMentor.name === mentor.name
+                  selectedMentorIndex === idx
                     ? `bg-gradient-to-r ${mentor.color} text-white shadow-md`
                     : "text-foreground hover:bg-muted"
                 }`}
@@ -109,26 +111,29 @@ export default function AgentPage() {
           </div>
         </div>
 
-        {/* Overlay for mobile */}
-        {sidebarOpen && (
-          <div
-            className="sm:hidden fixed inset-0 bg-black/50 z-30"
-            onClick={() => setSidebarOpen(false)}
-          />
-        )}
-
         {/* Main Chat Area */}
         <div className="flex-1 flex flex-col relative">
           {/* Chat Header */}
-          <div className={`px-4 py-3 bg-gradient-to-r ${selectedMentor.color} text-white flex items-center justify-between`}>
-            <div>
-              <p className="font-semibold text-sm sm:text-base">{selectedMentor.name}</p>
-            </div>
+          <div className={`px-4 py-3 bg-gradient-to-r ${selectedMentor.color} text-white flex items-center justify-between sm:justify-start gap-2`}>
+            {/* Mobile: Left Arrow */}
             <button
-              onClick={() => setSidebarOpen(true)}
+              onClick={handlePrevMentor}
               className="sm:hidden text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
             >
-              <Menu className="w-5 h-5" />
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Mentor Name */}
+            <div className="flex-1 text-center sm:text-left">
+              <p className="font-semibold text-sm sm:text-base">{selectedMentor.name}</p>
+            </div>
+
+            {/* Mobile: Right Arrow */}
+            <button
+              onClick={handleNextMentor}
+              className="sm:hidden text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+            >
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
 
