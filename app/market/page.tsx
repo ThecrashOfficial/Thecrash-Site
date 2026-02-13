@@ -234,7 +234,7 @@ reflecting their mindset, habits, and learning personality naturally
 Briefly introduce yourself, then ask the first question in Myanmar:
 
 "When you start learning something new, what do you usually want to do first?"`,
-    useCase: "သင့်ကိုယ်ပိုင်သင့်စဉ်သိမ်းသော သင်ခန်းစာဘောင်များ ရှာဖွေရန် ကူညီပေးပါသည်။ သင်ခန်းစာ အရသီးခြားလက္ခဏာကို နားလည်ကာ သင့်အတွက် အကောင်းဆုံး သင်ခန်းစာ နည်းလမ်းများ သိရှိရန် ကူညီပေးပါသည်။",
+    useCase: "သင့်ရဲ့ သဘာဝအတိုင်း သင်ယူလေ့လာပုံ (Learning Style) ကို မေးခွန်းတွေကနေတစ်ဆင့် သုံးသပ်ပေးပြီး၊ သင်နဲ့ အကိုက်ညီဆုံးဖြစ်မယ့် ထိရောက်တဲ့ လေ့လာနည်းလမ်းတွေကို အသေးစိတ် ဖော်ပြပေးနိုင်ပါတယ်။",
     type: "prompt",
     status: "free",
   },
