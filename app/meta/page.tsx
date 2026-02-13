@@ -138,17 +138,19 @@ export default function MetaPage() {
                 className={`overflow-hidden border-border bg-card group transition-all duration-500 hover:shadow-2xl hover:border-primary/50 hover:scale-[1.01]`}
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className={`grid gap-0 ${index % 2 === 0 ? "md:grid-cols-[280px_1fr]" : "md:grid-cols-[1fr_280px]"}`}>
-                  {/* Product Image/Logo */}
-                  <div className={`relative aspect-square md:aspect-auto overflow-hidden bg-muted flex items-center justify-center p-8 transition-all duration-500 group-hover:bg-muted/70 ${index % 2 === 1 ? "md:order-2" : ""}`}>
+                <div className={`grid gap-0 ${index % 2 === 0 ? "md:grid-cols-[320px_1fr]" : "md:grid-cols-[1fr_320px]"}`}>
+                  {/* Product Image/Logo - Minimalist Apple-style */}
+                  <div className={`relative aspect-square md:aspect-auto overflow-hidden bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center p-6 transition-all duration-500 group-hover:from-primary/5 group-hover:to-muted/50 ${index % 2 === 1 ? "md:order-2" : ""}`}>
                     {product.logo && (
-                      <Image
-                        src={product.logo}
-                        alt={product.title}
-                        width={200}
-                        height={200}
-                        className="object-contain transition-transform duration-500 group-hover:scale-110"
-                      />
+                      <div className="flex items-center justify-center w-full h-full">
+                        <Image
+                          src={product.logo}
+                          alt={product.title}
+                          width={240}
+                          height={240}
+                          className="object-contain max-w-[70%] max-h-[70%] transition-transform duration-500 group-hover:scale-105 drop-shadow-sm"
+                        />
+                      </div>
                     )}
                   </div>
 
