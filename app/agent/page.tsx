@@ -29,22 +29,6 @@ export default function AgentPage() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight" && !e.ctrlKey && !e.metaKey) {
-        e.preventDefault()
-        handleNextMentor()
-      } else if (e.key === "ArrowLeft" && !e.ctrlKey && !e.metaKey) {
-        e.preventDefault()
-        handlePrevMentor()
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [])
-
   const handleMentorChange = (index: number) => {
     setSelectedMentorIndex(index)
     setMessages([])
@@ -60,6 +44,22 @@ export default function AgentPage() {
     setSelectedMentorIndex((prev) => (prev - 1 + mentors.length) % mentors.length)
     setMessages([])
   }
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight" && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault()
+        handleNextMentor()
+      } else if (e.key === "ArrowLeft" && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault()
+        handlePrevMentor()
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [handleNextMentor, handlePrevMentor])
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return
