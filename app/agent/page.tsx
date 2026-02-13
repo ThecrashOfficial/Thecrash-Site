@@ -112,7 +112,7 @@ export default function AgentPage() {
         {/* Overlay for mobile */}
         {sidebarOpen && (
           <div
-            className="sm:hidden fixed inset-0 bg-black/50 z-30"
+            className="sm:hidden fixed inset-0 bg-black/50 z-20"
             onClick={() => setSidebarOpen(false)}
           />
         )}

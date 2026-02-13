@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
 
 const RobotIcon = () => (
   <svg 
@@ -15,9 +16,15 @@ const RobotIcon = () => (
 
 export function AIChatWidget() {
   const pathname = usePathname()
-  const isOnAgentPage = pathname === "/agent"
+  const [mounted, setMounted] = useState(false)
 
-  if (isOnAgentPage) {
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isOnAgentPage = mounted && pathname === "/agent"
+
+  if (!mounted || isOnAgentPage) {
     return null
   }
 
@@ -29,7 +36,7 @@ export function AIChatWidget() {
         position: 'fixed', 
         bottom: '24px', 
         right: '24px',
-        zIndex: 9999 
+        zIndex: 50
       }}
       aria-label="Open AI Assistant"
     >
