@@ -2,7 +2,6 @@
 
 import { Navigation } from "@/components/navigation"
 import { Card } from "@/components/ui/card"
-import Link from "next/link"
 import { useState } from "react"
 
 const CopyIcon = () => (
@@ -38,29 +37,22 @@ const ShoppingCartIcon = () => (
   </svg>
 )
 
-const StatusBadge = ({ status }) => {
-  const isAvailable = status === "free" || status === "paid"
-  if (!isAvailable) return null
-  
-  return (
-    <span className={`inline-block px-2.5 py-1 rounded-full text-xs font-semibold tracking-wide ${
-      status === "free"
-        ? "bg-foreground/10 text-foreground"
-        : "bg-primary/10 text-primary"
-    }`}>
-      {status.charAt(0).toUpperCase() + status.slice(1)}
-    </span>
-  )
-}
+const StatusBadge = ({ status }) => (
+  <span className={`inline-block px-2.5 py-1 rounded-full text-xs font-semibold tracking-wide ${
+    status === "free"
+      ? "bg-foreground/10 text-foreground"
+      : "bg-primary/10 text-primary"
+  }`}>
+    {status.charAt(0).toUpperCase() + status.slice(1)}
+  </span>
+)
 
 const marketplaceItems = [
-  // Prompt Templates Section - Individual Prompts
   {
     id: 1,
     title: "Content Creator Brief",
     description: "Generate compelling content briefs for any topic",
     prompt: "Create a detailed content brief for [TOPIC] including: main points, target audience, tone, key messages, and call-to-action",
-    category: "Prompt Templates",
     type: "prompt",
     status: "free",
   },
@@ -69,7 +61,6 @@ const marketplaceItems = [
     title: "Product Description Writer",
     description: "Write persuasive product descriptions",
     prompt: "Write a compelling product description for [PRODUCT NAME] that includes: key features, benefits, use cases, and why customers should buy it",
-    category: "Prompt Templates",
     type: "prompt",
     status: "free",
   },
@@ -78,7 +69,6 @@ const marketplaceItems = [
     title: "Social Media Caption",
     description: "Create engaging social media posts",
     prompt: "Write 5 different social media captions for [PLATFORM] about [TOPIC]. Make them engaging, include relevant hashtags, and optimize for [GOAL]",
-    category: "Prompt Templates",
     type: "prompt",
     status: "free",
   },
@@ -87,17 +77,13 @@ const marketplaceItems = [
     title: "Email Newsletter",
     description: "Craft professional newsletters",
     prompt: "Write a professional newsletter email about [TOPIC] with: catchy subject line, greeting, main content, key insights, and clear CTA",
-    category: "Prompt Templates",
     type: "prompt",
     status: "free",
   },
-
-  // Notion Templates Section
   {
     id: 5,
     title: "Premium Notion Template Pack",
     description: "All-in-one Notion system for project management, CRM, knowledge base, and task tracking.",
-    category: "Notion Templates",
     price: 24999,
     format: "Notion Template",
     downloads: "567",
@@ -109,7 +95,6 @@ const marketplaceItems = [
     id: 6,
     title: "Daily Focus OS Notion Template",
     description: "Beginner-friendly Notion template to prioritize tasks, track progress, and complete important work without overwhelm.",
-    category: "Notion Templates",
     price: 9999,
     format: "Notion Template",
     downloads: "834",
@@ -117,13 +102,10 @@ const marketplaceItems = [
     status: "paid",
     link: "https://notion.so",
   },
-
-  // Books Section
   {
     id: 7,
     title: "Web Development Basics",
     description: "Essential concepts for modern web development including HTML, CSS, JavaScript, and React fundamentals.",
-    category: "Books",
     price: 0,
     format: "Guide (30 pages)",
     downloads: "1,234",
@@ -135,7 +117,6 @@ const marketplaceItems = [
     id: 8,
     title: "Building Your First AI Agent",
     description: "Step-by-step guide to understanding and building your first AI agent from scratch.",
-    category: "Books",
     price: 0,
     format: "PDF (25 pages)",
     downloads: "856",
@@ -146,21 +127,17 @@ const marketplaceItems = [
   {
     id: 9,
     title: "Complete Guide to Next.js Development",
-    description: "Comprehensive guide covering Next.js 16, App Router, Server Components, and modern full-stack development patterns with real-world examples.",
-    category: "Books",
+    description: "Comprehensive guide covering Next.js 16, App Router, Server Components, and modern full-stack development patterns.",
     price: 19999,
     format: "E-Book (150 pages)",
     downloads: "324",
     type: "book",
     status: "paid",
   },
-
-  // Packages Section
   {
     id: 10,
     title: "Complete Next.js 16 Masterclass",
     description: "In-depth course covering Next.js 16, App Router, Server Components, and modern full-stack development patterns.",
-    category: "Packages",
     price: 49999,
     format: "Video Course (12 hours)",
     downloads: "324",
@@ -171,7 +148,6 @@ const marketplaceItems = [
     id: 11,
     title: "AI Automation Business Bundle",
     description: "Complete guide to building and monetizing AI automation products. Includes templates, case studies, and business models.",
-    category: "Packages",
     price: 99999,
     format: "Course + Templates (20 hours)",
     downloads: "156",
@@ -182,7 +158,6 @@ const marketplaceItems = [
     id: 12,
     title: "Web Dev Template Collection",
     description: "Premium collection of 10+ React and Next.js templates ready for production deployment.",
-    category: "Packages",
     price: 19999,
     format: "Code Templates",
     downloads: "212",
@@ -212,7 +187,6 @@ export default function MarketPage() {
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <div className="p-6 flex flex-col h-full gap-4">
-        {/* Header */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
             <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-1">
@@ -223,12 +197,10 @@ export default function MarketPage() {
           <StatusBadge status={item.status} />
         </div>
 
-        {/* Prompt Display */}
         <div className="flex-1 bg-muted/30 rounded-lg p-4 border border-border/30">
           <p className="text-sm text-foreground/80 leading-relaxed font-mono">{item.prompt}</p>
         </div>
 
-        {/* Copy Button */}
         <button
           onClick={() => handleCopy(item.id, item.prompt)}
           className={`w-full py-2.5 px-4 rounded-lg font-medium text-sm flex items-center justify-center gap-2 transition-all ${
@@ -251,7 +223,6 @@ export default function MarketPage() {
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <div className="p-6 flex flex-col h-full gap-4">
-        {/* Header */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
             <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-1">
@@ -262,13 +233,11 @@ export default function MarketPage() {
           <StatusBadge status={item.status} />
         </div>
 
-        {/* Meta Info */}
         <div className="flex items-center gap-4 text-xs text-muted-foreground/70">
           {item.format && <span>{item.format}</span>}
           {item.downloads && <span>{item.downloads} downloads</span>}
         </div>
 
-        {/* Price & Action */}
         <div className="flex items-center justify-between gap-3 pt-2 border-t border-border/30">
           <span className="font-semibold text-foreground">
             {item.price === 0 ? "Free" : `${item.price.toLocaleString()} MMK`}
@@ -305,10 +274,7 @@ export default function MarketPage() {
             </button>
           )}
         </div>
-      </main>
-    </div>
-  )
-}
+      </div>
     </Card>
   )
 
@@ -318,7 +284,6 @@ export default function MarketPage() {
 
       <main className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
           <div className="mb-16">
             <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-3 tracking-tight">Market</h1>
             <p className="text-base text-muted-foreground leading-relaxed max-w-2xl">
@@ -326,7 +291,6 @@ export default function MarketPage() {
             </p>
           </div>
 
-          {/* Prompt Templates Section */}
           {promptTemplates.length > 0 && (
             <div className="mb-20">
               <div className="mb-8">
@@ -341,7 +305,6 @@ export default function MarketPage() {
             </div>
           )}
 
-          {/* Notion Templates Section */}
           {notionTemplates.length > 0 && (
             <div className="mb-20">
               <div className="mb-8">
@@ -356,7 +319,6 @@ export default function MarketPage() {
             </div>
           )}
 
-          {/* Books Section */}
           {books.length > 0 && (
             <div className="mb-20">
               <div className="mb-8">
@@ -371,354 +333,12 @@ export default function MarketPage() {
             </div>
           )}
 
-          {/* Packages Section */}
           {packages.length > 0 && (
             <div>
               <div className="mb-8">
                 <h2 className="text-2xl font-bold text-foreground">Packages</h2>
                 <p className="text-sm text-muted-foreground mt-2">Complete courses and bundles</p>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                {packages.map((item, index) => (
-                  <ProductCard item={item} index={index} key={item.id} />
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </main>
-    </div>
-  )
-}
-
-  },
-  {
-    id: 2,
-    title: "Product Description Writer",
-    description: "Write persuasive product descriptions",
-    prompt: "Write a compelling product description for [PRODUCT NAME] that includes: key features, benefits, use cases, and why customers should buy it",
-    category: "Prompt Templates",
-    type: "prompt",
-    status: "free",
-  },
-  {
-    id: 3,
-    title: "Social Media Caption",
-    description: "Create engaging social media posts",
-    prompt: "Write 5 different social media captions for [PLATFORM] about [TOPIC]. Make them engaging, include relevant hashtags, and optimize for [GOAL]",
-    category: "Prompt Templates",
-    type: "prompt",
-    status: "free",
-  },
-  {
-    id: 4,
-    title: "Email Newsletter",
-    description: "Craft professional newsletters",
-    prompt: "Write a professional newsletter email about [TOPIC] with: catchy subject line, greeting, main content, key insights, and clear CTA",
-    category: "Prompt Templates",
-    type: "prompt",
-    status: "free",
-  },
-
-  // Notion Templates Section
-  {
-    id: 5,
-    title: "Premium Notion Template Pack",
-    description: "All-in-one Notion system for project management, CRM, knowledge base, and task tracking.",
-    category: "Notion Templates",
-    price: 24999,
-    format: "Notion Template",
-    downloads: "567",
-    type: "notion",
-    status: "paid",
-    link: "https://notion.so",
-  },
-  {
-    id: 6,
-    title: "Daily Focus OS Notion Template",
-    description: "Beginner-friendly Notion template to prioritize tasks, track progress, and complete important work without overwhelm.",
-    category: "Notion Templates",
-    price: 9999,
-    format: "Notion Template",
-    downloads: "834",
-    type: "notion",
-    status: "paid",
-    link: "https://notion.so",
-  },
-
-  // Books Section
-  {
-    id: 7,
-    title: "Web Development Basics",
-    description: "Essential concepts for modern web development including HTML, CSS, JavaScript, and React fundamentals.",
-    category: "Books",
-    price: 0,
-    format: "Guide (30 pages)",
-    downloads: "1,234",
-    type: "book",
-    status: "free",
-    link: "https://t.me/thecrashOfficial",
-  },
-  {
-    id: 8,
-    title: "Building Your First AI Agent",
-    description: "Step-by-step guide to understanding and building your first AI agent from scratch.",
-    category: "Books",
-    price: 0,
-    format: "PDF (25 pages)",
-    downloads: "856",
-    type: "book",
-    status: "free",
-    link: "https://t.me/thecrashOfficial",
-  },
-  {
-    id: 9,
-    title: "Complete Guide to Next.js Development",
-    description: "Comprehensive guide covering Next.js 16, App Router, Server Components, and modern full-stack development patterns with real-world examples.",
-    category: "Books",
-    price: 19999,
-    format: "E-Book (150 pages)",
-    downloads: "324",
-    type: "book",
-    status: "paid",
-  },
-
-  // Packages Section
-  {
-    id: 10,
-    title: "Complete Next.js 16 Masterclass",
-    description: "In-depth course covering Next.js 16, App Router, Server Components, and modern full-stack development patterns.",
-    category: "Packages",
-    price: 49999,
-    format: "Video Course (12 hours)",
-    downloads: "324",
-    type: "package",
-    status: "paid",
-  },
-  {
-    id: 11,
-    title: "AI Automation Business Bundle",
-    description: "Complete guide to building and monetizing AI automation products. Includes templates, case studies, and business models.",
-    category: "Packages",
-    price: 99999,
-    format: "Course + Templates (20 hours)",
-    downloads: "156",
-    type: "package",
-    status: "paid",
-  },
-  {
-    id: 12,
-    title: "Web Dev Template Collection",
-    description: "Premium collection of 10+ React and Next.js templates ready for production deployment.",
-    category: "Packages",
-    price: 19999,
-    format: "Code Templates",
-    downloads: "212",
-    type: "package",
-    status: "paid",
-  },
-]
-
-export default function MarketPage() {
-  const [copiedId, setCopiedId] = useState(null)
-
-  const handleCopy = (id, text) => {
-    navigator.clipboard.writeText(text)
-    setCopiedId(id)
-    setTimeout(() => setCopiedId(null), 2000)
-  }
-
-  const promptTemplates = marketplaceItems.filter((item) => item.type === "prompt")
-  const notionTemplates = marketplaceItems.filter((item) => item.type === "notion")
-  const books = marketplaceItems.filter((item) => item.type === "book")
-  const packages = marketplaceItems.filter((item) => item.type === "package")
-
-  const PromptCard = ({ item, index }) => (
-    <Card
-      key={item.id}
-      className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02]"
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
-      <div className="p-6 lg:p-8 flex flex-col justify-between h-full">
-        {/* Status Badge */}
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-2">
-            {item.status === "free" ? <FreeBadge /> : <PaidBadge />}
-            <span className="text-xs font-semibold text-foreground uppercase tracking-wider">
-              {item.status}
-            </span>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="mb-6 flex-1">
-          <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors mb-2">
-            {item.title}
-          </h3>
-          <p className="text-muted-foreground text-sm mb-4">{item.description}</p>
-          
-          {/* Prompt Box */}
-          <div className="bg-muted/50 rounded-lg p-4 border border-border/50 mb-4">
-            <p className="text-foreground text-sm font-mono leading-relaxed">{item.prompt}</p>
-          </div>
-        </div>
-
-        {/* Copy Button */}
-        <button
-          onClick={() => handleCopy(item.id, item.prompt)}
-          className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg transition-all font-medium ${
-            copiedId === item.id
-              ? "bg-green-500/20 text-green-500 border border-green-500"
-              : "bg-foreground text-background hover:opacity-90 active:scale-95"
-          }`}
-        >
-          <CopyIcon />
-          {copiedId === item.id ? "Copied!" : "Copy Prompt"}
-        </button>
-      </div>
-    </Card>
-  )
-
-  const ProductCard = ({ item, index }) => (
-    <Card
-      key={item.id}
-      className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-xl hover:border-primary/50 hover:scale-[1.02]"
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
-      <div className="p-6 lg:p-8 flex flex-col justify-between h-full">
-        {/* Status Badge */}
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-2">
-            {item.status === "free" ? <FreeBadge /> : <PaidBadge />}
-            <span className="text-xs font-semibold text-foreground uppercase tracking-wider">
-              {item.status}
-            </span>
-          </div>
-          {item.downloads && (
-            <span className="text-xs text-muted-foreground">{item.downloads} downloads</span>
-          )}
-        </div>
-
-        {/* Content */}
-        <div className="mb-4 flex-1">
-          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
-            {item.title}
-          </h3>
-          <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.description}</p>
-          {item.format && <p className="text-xs text-muted-foreground">{item.format}</p>}
-        </div>
-
-        {/* Price & Action */}
-        <div className="border-t border-border/50 pt-4">
-          <div className="flex items-center justify-between gap-4">
-            {item.price !== undefined && (
-              <p className="text-lg font-bold text-foreground">
-                {item.price === 0 ? "Free" : `${item.price.toLocaleString()} MMK`}
-              </p>
-            )}
-
-            {item.type === "notion" && (
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background hover:opacity-90 rounded-lg transition-all font-medium active:scale-95 whitespace-nowrap"
-              >
-                <ExternalLinkIcon />
-                Access
-              </a>
-            )}
-
-            {item.type === "book" && item.status === "free" && (
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background hover:opacity-90 rounded-lg transition-all font-medium active:scale-95 whitespace-nowrap"
-              >
-                <ExternalLinkIcon />
-                Access
-              </a>
-            )}
-
-            {(item.type === "package" || (item.type === "book" && item.status === "paid")) && (
-              <button className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95 whitespace-nowrap">
-                <ShoppingCartIcon />
-                Buy Now
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-    </Card>
-  )
-
-  return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
-      <main className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="mb-16 animate-slide-up">
-            <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">Market</h1>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Discover everything you need to build, learn, and scale. Premium prompts, templates, books, and complete packages all in one place.
-            </p>
-          </div>
-
-          {/* Prompt Templates Section */}
-          {promptTemplates.length > 0 && (
-            <div className="mb-16">
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <span className="w-1 h-8 bg-blue-500 rounded-full"></span>
-                Prompt Templates
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {promptTemplates.map((item, index) => (
-                  <PromptCard item={item} index={index} key={item.id} />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Notion Templates Section */}
-          {notionTemplates.length > 0 && (
-            <div className="mb-16">
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <span className="w-1 h-8 bg-purple-500 rounded-full"></span>
-                Notion Templates
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {notionTemplates.map((item, index) => (
-                  <ProductCard item={item} index={index} key={item.id} />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Books Section */}
-          {books.length > 0 && (
-            <div className="mb-16">
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <span className="w-1 h-8 bg-amber-500 rounded-full"></span>
-                Books
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {books.map((item, index) => (
-                  <ProductCard item={item} index={index} key={item.id} />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Packages Section */}
-          {packages.length > 0 && (
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <span className="w-1 h-8 bg-primary rounded-full"></span>
-                Packages
-              </h2>
               <div className="grid md:grid-cols-2 gap-6">
                 {packages.map((item, index) => (
                   <ProductCard item={item} index={index} key={item.id} />
