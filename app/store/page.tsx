@@ -199,9 +199,12 @@ const marketplaceItems = [
 ]
 
 export default function MarketPage() {
-  const handleCopy = (text) => {
+  const [copiedId, setCopiedId] = useState(null)
+
+  const handleCopy = (id, text) => {
     navigator.clipboard.writeText(text)
-    alert("Copied to clipboard!")
+    setCopiedId(id)
+    setTimeout(() => setCopiedId(null), 2000)
   }
 
   const promptTemplates = marketplaceItems.filter((item) => item.type === "prompt")
@@ -243,17 +246,21 @@ export default function MarketPage() {
               {/* Price & Action */}
               <div className="border-t border-border/50 pt-4">
                 <div className="flex items-center justify-between">
-                  <p className={`text-lg font-bold ${item.price === 0 ? "text-green-500" : "text-foreground"}`}>
-                    {item.price === 0 ? "Free" : `${item.price.toLocaleString()} MMK`}
+                  <p className="text-lg font-bold text-foreground/70">
+                    {item.price === 0 ? "Complimentary" : `${item.price.toLocaleString()} MMK`}
                   </p>
 
                   {item.buttonType === "copy" && (
                     <button
-                      onClick={() => handleCopy(item.title)}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
+                      onClick={() => handleCopy(item.id, item.title)}
+                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-all font-medium ${
+                        copiedId === item.id
+                          ? "bg-green-500/20 text-green-500 border border-green-500"
+                          : "bg-primary hover:bg-primary/90 text-primary-foreground hover:shadow-lg active:scale-95"
+                      }`}
                     >
                       <CopyIcon />
-                      Copy
+                      {copiedId === item.id ? "Copied!" : "Copy"}
                     </button>
                   )}
 
@@ -265,7 +272,7 @@ export default function MarketPage() {
                       className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
                     >
                       <ExternalLinkIcon />
-                      Get
+                      Access
                     </a>
                   )}
 
@@ -277,7 +284,7 @@ export default function MarketPage() {
                       className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all font-medium hover:shadow-lg active:scale-95"
                     >
                       <TelegramIcon />
-                      Get
+                      Join Channel
                     </a>
                   )}
 
