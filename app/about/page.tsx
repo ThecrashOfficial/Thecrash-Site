@@ -271,10 +271,10 @@ export default function AboutPage() {
               Interested in collaboration or want to learn more about my projects?
             </p>
             <Button size="lg" className="gap-2" asChild>
-              <Link href="/community">
+              <a href="https://t.me/thecrashOfficial" target="_blank" rel="noopener noreferrer">
                 Join the Community
                 <ExternalLink className="w-4 h-4" />
-              </Link>
+              </a>
             </Button>
           </div>
         </div>

@@ -574,12 +574,14 @@ export default function ResourcesPage() {
               >
                 View Services
               </Link>
-              <Link
-                href="/community"
+              <a
+                href="https://t.me/thecrashOfficial"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-3 border-2 border-primary text-foreground rounded-lg font-medium transition-all duration-300 hover:bg-primary/10 hover:scale-110 hover:shadow-lg active:scale-95 btn-smooth"
               >
                 Join Community
-              </Link>
+              </a>
             </div>
           </div>
         </div>

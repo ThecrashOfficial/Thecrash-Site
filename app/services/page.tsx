@@ -93,9 +93,9 @@ export default function ServicesPage() {
               Let's have a free 15-minute consultation to discuss your needs
             </p>
             <div className="flex gap-4 justify-center">
-              <Link href="/community" className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity">
+              <a href="https://t.me/thecrashOfficial" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity">
                 Contact Me
-              </Link>
+              </a>
               <Link href="/projects" className="px-6 py-3 border-2 border-primary text-foreground rounded-lg font-medium hover:bg-primary/10 transition-colors">
                 View My Work
               </Link>

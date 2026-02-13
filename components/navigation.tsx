@@ -11,7 +11,7 @@ const navItems = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/meta", label: "Meta" },
-  { href: "/store", label: "Market" },
+  { href: "/market", label: "Market" },
   { href: "/blog", label: "Blog" },
 ]
 

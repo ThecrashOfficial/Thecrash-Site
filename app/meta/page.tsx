@@ -1,8 +1,8 @@
 import { Navigation } from "@/components/navigation"
-import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import Image from "next/image"
+import ProjectCard from "@/components/project-card"
 
 const ExternalLinkIcon = () => (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -11,17 +11,6 @@ const ExternalLinkIcon = () => (
       strokeLinejoin="round"
       strokeWidth={2}
       d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-    />
-  </svg>
-)
-
-const ShoppingCartIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
     />
   </svg>
 )
@@ -130,113 +119,34 @@ export default function MetaPage() {
             </p>
           </div>
 
-          {/* Products Grid */}
-          <div className="space-y-16">
-            {products.map((product, index) => (
-              <Card
-                key={index}
-                className={`overflow-hidden border-border bg-card group transition-all duration-500 hover:shadow-2xl hover:border-primary/50 hover:scale-[1.01]`}
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <div className="grid md:grid-cols-[280px_1fr] gap-0">
-                  {/* Product Image/Logo */}
-                  <div className="relative aspect-square md:aspect-auto overflow-hidden bg-muted flex items-center justify-center p-8 transition-all duration-500 group-hover:bg-muted/70">
-                    {product.logo && (
-                      <Image
-                        src={product.logo}
-                        alt={product.title}
-                        width={200}
-                        height={200}
-                        className="object-contain transition-transform duration-500 group-hover:scale-110"
-                      />
-                    )}
-                  </div>
-
-                  {/* Product Details */}
-                  <div className="p-8 lg:p-12 flex flex-col justify-between">
-                    <div>
-                      {/* Header with Badges */}
-                      <div className="flex items-center gap-3 mb-4 flex-wrap animate-slide-up" style={{ animationDelay: `${index * 150 + 100}ms` }}>
-                        <Badge
-                          variant={
-                            product.status === "Live"
-                              ? "default"
-                              : product.status === "Available"
-                                ? "secondary"
-                                : "outline"
-                          }
-                          className="text-xs"
-                        >
-                          {product.status}
-                        </Badge>
-                        <span className="text-xs text-muted-foreground">{product.category}</span>
-                        <span className="text-xs text-muted-foreground">•</span>
-                        <span className="text-xs text-muted-foreground">{product.year}</span>
-                      </div>
-
-                      {/* Title */}
-                      <div className="mb-4 animate-slide-up" style={{ animationDelay: `${index * 150 + 150}ms` }}>
-                        <h2 className="text-3xl font-bold text-card-foreground transition-colors duration-300 group-hover:text-primary">
-                          {product.title}
-                        </h2>
-                        {product.subtitle && <p className="text-sm text-muted-foreground mt-1">{product.subtitle}</p>}
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-muted-foreground mb-6 leading-relaxed animate-slide-up" style={{ animationDelay: `${index * 150 + 200}ms` }}>
-                        {product.description}
-                      </p>
-
-                      {/* Features */}
-                      <div className="mb-6 animate-slide-up" style={{ animationDelay: `${index * 150 + 250}ms` }}>
-                        <h3 className="text-sm font-semibold text-card-foreground mb-3">Key Features:</h3>
-                        <ul className="space-y-2">
-                          {product.features.map((feature, idx) => (
-                            <li
-                              key={idx}
-                              className="text-sm text-muted-foreground flex items-start gap-2 transition-all duration-300 hover:text-foreground hover:translate-x-1"
-                            >
-                              <span className="text-primary mt-1 transition-transform duration-300 hover:scale-125">•</span>
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* Price and CTA */}
-                    <div className="flex items-center justify-between pt-6 border-t border-border/50 animate-slide-up" style={{ animationDelay: `${index * 150 + 300}ms` }}>
-                      <div>
-                        <p className="text-xs text-muted-foreground mb-1">Price</p>
-                        <p className="text-2xl font-bold text-primary">{product.price}</p>
-                      </div>
-
-                      <div className="flex gap-3">
-                        {product.link && product.status !== "Coming Soon" && (
-                          <Link
-                            href={product.link}
-                            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-foreground border-2 border-foreground rounded-lg transition-all duration-300 hover:bg-foreground hover:text-background hover:scale-105 active:scale-95"
-                          >
-                            <ExternalLinkIcon />
-                            {product.previewText}
-                          </Link>
-                        )}
-                        {product.status !== "Coming Soon" && product.price !== "Free" ? (
-                          <button className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-all font-medium hover:shadow-lg hover:scale-105 active:scale-95">
-                            <ShoppingCartIcon />
-                            Buy Now
-                          </button>
-                        ) : product.status === "Coming Soon" ? (
-                          <button className="inline-flex items-center gap-2 px-6 py-3 bg-muted hover:bg-muted/80 text-foreground rounded-lg transition-all font-medium">
-                            {product.previewText}
-                          </button>
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
+          {/* Products Grid - Masonry Layout with Varied Sizes */}
+          <div className="grid auto-rows-max gap-6" style={{
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))"
+          }}>
+            {products.map((product, index) => {
+              // Alternate tall/wide cards for visual variety
+              const isTall = index % 3 === 0
+              const isWide = index % 3 === 1
+              const colSpan = isWide ? "md:col-span-2" : ""
+              const rowSpan = isTall ? "md:row-span-2" : ""
+              
+              return (
+                <div
+                  key={index}
+                  className={`${colSpan} ${rowSpan}`}
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <ProjectCard
+                    icon={product.logo}
+                    title={product.title}
+                    subtitle={product.subtitle}
+                    description={product.description}
+                    ctaText={product.previewText}
+                    ctaLink={product.link || '#'}
+                  />
                 </div>
-              </Card>
-            ))}
+              )
+            })}
           </div>
         </div>
       </main>

@@ -1,14 +1,11 @@
 "use client"
 
 import { Navigation } from "@/components/navigation"
-import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import Image from "next/image"
-import { useState } from "react"
 
 const ArrowRightIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
   </svg>
 )
@@ -19,7 +16,6 @@ const posts = [
     title: "The Future of AI Agents",
     excerpt:
       "Exploring how autonomous AI agents will reshape software development, businesses, and how we work. The shift from tools to intelligent assistants is just beginning.",
-    image: "/placeholder.jpg",
     date: "Feb 13, 2025",
     category: "AI & Automation",
     readTime: "8 min read",
@@ -30,7 +26,6 @@ const posts = [
     title: "Why Builders Should Think in Systems",
     excerpt:
       "Learn how systems thinking transforms product development. Instead of building features in isolation, understand how interconnected components create powerful outcomes.",
-    image: "/placeholder-user.jpg",
     date: "Feb 10, 2025",
     category: "Strategy",
     readTime: "6 min read",
@@ -41,7 +36,6 @@ const posts = [
     title: "Monetizing Digital Intelligence",
     excerpt:
       "A practical guide to turning AI capabilities into revenue streams. From SaaS to AI agents, explore proven monetization strategies for the AI era.",
-    image: "/placeholder.jpg",
     date: "Feb 5, 2025",
     category: "Business",
     readTime: "10 min read",
@@ -52,7 +46,6 @@ const posts = [
     title: "From Tools to Infrastructure: The AI Shift",
     excerpt:
       "The next wave isn't about better AI tools—it's about AI infrastructure. Discover how this shift creates new opportunities for builders and entrepreneurs.",
-    image: "/placeholder-user.jpg",
     date: "Jan 28, 2025",
     category: "Technology",
     readTime: "7 min read",
@@ -63,7 +56,6 @@ const posts = [
     title: "Building in Public: Lessons from 2024",
     excerpt:
       "Reflecting on what I learned by building and sharing projects publicly. The transparency, community feedback, and opportunities that emerged changed everything.",
-    image: "/placeholder.jpg",
     date: "Jan 20, 2025",
     category: "Entrepreneurship",
     readTime: "9 min read",
@@ -74,7 +66,6 @@ const posts = [
     title: "The Art of Shipping Fast",
     excerpt:
       "Why speed matters more than perfection. A framework for building, launching, and iterating quickly while maintaining quality and user satisfaction.",
-    image: "/placeholder-user.jpg",
     date: "Jan 12, 2025",
     category: "Development",
     readTime: "5 min read",
@@ -82,19 +73,13 @@ const posts = [
   },
 ]
 
-const categories = ["All", "AI & Automation", "Strategy", "Business", "Technology", "Entrepreneurship", "Development"]
-
 export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All")
-
-  const filteredPosts = selectedCategory === "All" ? posts : posts.filter((post) => post.category === selectedCategory)
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
       <main className="pt-32 pb-20 px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="mb-16 animate-slide-up">
             <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">Blog</h1>
@@ -103,79 +88,48 @@ export default function BlogPage() {
             </p>
           </div>
 
-          {/* Category Filter */}
-          <div className="mb-12 animate-slide-up" style={{ animationDelay: "100ms" }}>
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category, index) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    selectedCategory === category
-                      ? "bg-primary text-primary-foreground scale-105"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80 hover:scale-105"
-                  }`}
+          {/* Blog Posts List */}
+          <div className="space-y-6 animate-slide-up" style={{ animationDelay: "100ms" }}>
+            {posts.map((post, index) => (
+              <Link key={post.id} href={`/blog/${post.slug}`}>
+                <div
+                  className="group border border-border/40 rounded-xl p-6 transition-all duration-300 hover:border-primary/50 hover:bg-card/50 hover:shadow-lg hover:-translate-y-1 cursor-pointer bg-card/20 backdrop-blur-sm shadow-sm"
                   style={{ animationDelay: `${150 + index * 50}ms` }}
                 >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
+                  <div className="flex items-start justify-between gap-4">
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      {/* Title */}
+                      <h2 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-3 line-clamp-2">
+                        {post.title}
+                      </h2>
 
-          {/* Blog Posts Grid */}
-          <div className="space-y-6 animate-slide-up" style={{ animationDelay: "200ms" }}>
-            {filteredPosts.map((post, index) => (
-              <Link key={post.id} href={`/blog/${post.slug}`}>
-                <Card className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:scale-[1.01] cursor-pointer" style={{ animationDelay: `${250 + index * 75}ms` }}>
-                  <div className="grid md:grid-cols-3 gap-0">
-                    {/* Image Section */}
-                    <div className="relative aspect-video md:aspect-auto overflow-hidden bg-muted">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
+                      {/* Excerpt */}
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
+                        {post.excerpt}
+                      </p>
+
+                      {/* Meta Info */}
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <Badge variant="secondary" className="text-xs">
+                          {post.category}
+                        </Badge>
+                        <span className="text-xs text-muted-foreground">•</span>
+                        <span className="text-xs text-muted-foreground">{post.readTime}</span>
+                        <span className="text-xs text-muted-foreground">•</span>
+                        <span className="text-xs text-muted-foreground">{post.date}</span>
+                      </div>
                     </div>
 
-                    {/* Content Section */}
-                    <div className="p-6 md:col-span-2 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center gap-2 mb-3 flex-wrap">
-                          <Badge variant="secondary" className="text-xs">
-                            {post.category}
-                          </Badge>
-                          <span className="text-xs text-muted-foreground">•</span>
-                          <span className="text-xs text-muted-foreground">{post.readTime}</span>
-                        </div>
-
-                        <h2 className="text-xl lg:text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors mb-3 line-clamp-2">
-                          {post.title}
-                        </h2>
-
-                        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">{post.excerpt}</p>
-                      </div>
-
-                      <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/50">
-                        <span className="text-xs text-muted-foreground">{post.date}</span>
-                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                          <ArrowRightIcon />
-                        </div>
-                      </div>
+                    {/* Arrow */}
+                    <div className="w-9 h-9 rounded-full bg-muted/50 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 group-hover:scale-110 transition-all mt-1">
+                      <ArrowRightIcon />
                     </div>
                   </div>
-                </Card>
+                </div>
               </Link>
             ))}
           </div>
-
-          {/* Empty State */}
-          {filteredPosts.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">No posts found in this category.</p>
-            </div>
-          )}
         </div>
       </main>
     </div>
