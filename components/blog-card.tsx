@@ -12,6 +12,7 @@ interface BlogCardProps {
   date: string
   readTime: string
   slug: string
+  color?: string
 }
 
 const ArrowRightIcon = () => (
@@ -28,12 +29,13 @@ export default function BlogCard({
   date,
   readTime,
   slug,
+  color = "from-slate-500/20 to-gray-500/20",
 }: BlogCardProps) {
   return (
     <Link href={`/blog/${slug}`} className="group block h-full">
       <div className="rounded-xl overflow-hidden bg-card/50 backdrop-blur border border-border/50 transition-all duration-300 hover:shadow-lg hover:border-primary/50 h-full flex flex-col">
         {/* Image - Full Width Top */}
-        <div className="relative w-full aspect-video overflow-hidden bg-muted">
+        <div className={`relative w-full aspect-video overflow-hidden bg-gradient-to-br ${color}`}>
           <Image
             src={image}
             alt={title}

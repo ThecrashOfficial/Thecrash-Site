@@ -16,6 +16,7 @@ const posts = [
     category: "AI & Automation",
     readTime: "8 min read",
     slug: "future-of-ai-agents",
+    color: "from-blue-500/20 to-cyan-500/20",
   },
   {
     id: 2,
@@ -27,6 +28,7 @@ const posts = [
     category: "Strategy",
     readTime: "6 min read",
     slug: "systems-thinking-builders",
+    color: "from-purple-500/20 to-pink-500/20",
   },
   {
     id: 3,
@@ -38,6 +40,7 @@ const posts = [
     category: "Business",
     readTime: "10 min read",
     slug: "monetizing-digital-intelligence",
+    color: "from-amber-500/20 to-orange-500/20",
   },
   {
     id: 4,
@@ -49,6 +52,7 @@ const posts = [
     category: "Technology",
     readTime: "7 min read",
     slug: "tools-to-infrastructure-ai",
+    color: "from-emerald-500/20 to-teal-500/20",
   },
   {
     id: 5,
@@ -60,6 +64,7 @@ const posts = [
     category: "Entrepreneurship",
     readTime: "9 min read",
     slug: "building-in-public-2024",
+    color: "from-rose-500/20 to-red-500/20",
   },
   {
     id: 6,
@@ -71,6 +76,7 @@ const posts = [
     category: "Development",
     readTime: "5 min read",
     slug: "art-of-shipping-fast",
+    color: "from-indigo-500/20 to-blue-500/20",
   },
 ]
 
@@ -142,6 +148,7 @@ export default function BlogPage() {
                     date={post.date}
                     readTime={post.readTime}
                     slug={post.slug}
+                    color={post.color}
                   />
                 </div>
               )
