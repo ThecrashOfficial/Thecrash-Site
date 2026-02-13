@@ -10,7 +10,7 @@ const blogPosts: Record<string, any> = {
     title: "၂၀၂၄ မှ ၂၀၂၆ အတွင်း ပြောင်းလဲခဲ့သော AI အပေါ် အမြင်",
     date: "Feb 13, 2026",
     category: "AI & Perspectives",
-    readTime: "12 min read",
+    readTime: "3 min read",
     author: "Thecrash",
     content: `၂၀၂၄ ကနေ ၂၀၂၆ လောက် AI ကို အသုံးများခဲ့တဲ့ AI edge user တစ်ယောက် ဖြစ်ခဲ့တယ်ပေါ့။
 
