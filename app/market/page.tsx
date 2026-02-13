@@ -293,11 +293,11 @@ export default function MarketPage() {
 
           {promptTemplates.length > 0 && (
             <div className="mb-20">
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-foreground">Prompt Templates</h2>
-                <p className="text-sm text-muted-foreground mt-2">Copy-paste ready prompts for any task</p>
+              <div className="mb-10">
+                <h2 className="text-3xl font-bold text-foreground mb-2 tracking-tight">Prompt Templates</h2>
+                <p className="text-base text-muted-foreground">Copy-paste ready prompts for any task</p>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {promptTemplates.map((item, index) => (
                   <PromptCard item={item} index={index} key={item.id} />
                 ))}
@@ -307,11 +307,11 @@ export default function MarketPage() {
 
           {notionTemplates.length > 0 && (
             <div className="mb-20">
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-foreground">Notion Templates</h2>
-                <p className="text-sm text-muted-foreground mt-2">Pre-built systems for productivity</p>
+              <div className="mb-10">
+                <h2 className="text-3xl font-bold text-foreground mb-2 tracking-tight">Notion Templates</h2>
+                <p className="text-base text-muted-foreground">Pre-built systems for productivity</p>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {notionTemplates.map((item, index) => (
                   <ProductCard item={item} index={index} key={item.id} />
                 ))}
@@ -321,11 +321,11 @@ export default function MarketPage() {
 
           {books.length > 0 && (
             <div className="mb-20">
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-foreground">Books</h2>
-                <p className="text-sm text-muted-foreground mt-2">Guides and e-books to level up your skills</p>
+              <div className="mb-10">
+                <h2 className="text-3xl font-bold text-foreground mb-2 tracking-tight">Books</h2>
+                <p className="text-base text-muted-foreground">Guides and e-books to level up your skills</p>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {books.map((item, index) => (
                   <ProductCard item={item} index={index} key={item.id} />
                 ))}
@@ -335,11 +335,11 @@ export default function MarketPage() {
 
           {packages.length > 0 && (
             <div>
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-foreground">Packages</h2>
-                <p className="text-sm text-muted-foreground mt-2">Complete courses and bundles</p>
+              <div className="mb-10">
+                <h2 className="text-3xl font-bold text-foreground mb-2 tracking-tight">Packages</h2>
+                <p className="text-base text-muted-foreground">Complete courses and bundles</p>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {packages.map((item, index) => (
                   <ProductCard item={item} index={index} key={item.id} />
                 ))}

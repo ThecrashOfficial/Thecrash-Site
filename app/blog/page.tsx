@@ -115,20 +115,37 @@ export default function BlogPage() {
             </div>
           </div>
 
-          {/* Blog Posts Grid - Responsive Vertical Cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-slide-up" style={{ animationDelay: "200ms" }}>
-            {filteredPosts.map((post, index) => (
-              <BlogCard
-                key={post.id}
-                image={post.image}
-                title={post.title}
-                excerpt={post.excerpt}
-                category={post.category}
-                date={post.date}
-                readTime={post.readTime}
-                slug={post.slug}
-              />
-            ))}
+          {/* Blog Posts Grid - Alternating Layouts with Varied Sizes */}
+          <div className="grid gap-6 md:gap-8 animate-slide-up" style={{ 
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            animationDelay: "200ms" 
+          }}>
+            {filteredPosts.map((post, index) => {
+              // Alternate between regular and wide cards for visual variety
+              const isWide = index % 3 === 0
+              const isTall = index % 4 === 2
+              
+              return (
+                <div
+                  key={post.id}
+                  className={`${isWide ? "md:col-span-2" : ""} ${isTall ? "md:row-span-2" : ""}`}
+                  style={{ 
+                    gridColumn: isWide ? "span 2" : "span 1",
+                    gridRow: isTall ? "span 2" : "span 1"
+                  }}
+                >
+                  <BlogCard
+                    image={post.image}
+                    title={post.title}
+                    excerpt={post.excerpt}
+                    category={post.category}
+                    date={post.date}
+                    readTime={post.readTime}
+                    slug={post.slug}
+                  />
+                </div>
+              )
+            })}
           </div>
 
           {/* Empty State */}

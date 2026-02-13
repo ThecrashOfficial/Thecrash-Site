@@ -119,19 +119,34 @@ export default function MetaPage() {
             </p>
           </div>
 
-          {/* Products Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product, index) => (
-              <ProjectCard
-                key={index}
-                icon={product.logo}
-                title={product.title}
-                subtitle={product.subtitle}
-                description={product.description}
-                ctaText={product.previewText}
-                ctaLink={product.link || '#'}
-              />
-            ))}
+          {/* Products Grid - Masonry Layout with Varied Sizes */}
+          <div className="grid auto-rows-max gap-6" style={{
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))"
+          }}>
+            {products.map((product, index) => {
+              // Alternate tall/wide cards for visual variety
+              const isTall = index % 3 === 0
+              const isWide = index % 3 === 1
+              const colSpan = isWide ? "md:col-span-2" : ""
+              const rowSpan = isTall ? "md:row-span-2" : ""
+              
+              return (
+                <div
+                  key={index}
+                  className={`${colSpan} ${rowSpan}`}
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <ProjectCard
+                    icon={product.logo}
+                    title={product.title}
+                    subtitle={product.subtitle}
+                    description={product.description}
+                    ctaText={product.previewText}
+                    ctaLink={product.link || '#'}
+                  />
+                </div>
+              )
+            })}
           </div>
         </div>
       </main>
