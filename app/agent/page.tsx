@@ -148,14 +148,14 @@ export default function AgentPage() {
         {/* Main Chat Area */}
         <div className="flex-1 flex flex-col relative">
           {/* Chat Header */}
-          <div className={`px-4 py-3 bg-gradient-to-r ${selectedMentor.color} text-white flex items-center justify-between sm:justify-start gap-2`}>
+          <div className={`px-3 py-3 bg-gradient-to-r ${selectedMentor.color} text-white flex items-center justify-between sm:justify-start gap-2`}>
             {/* Mobile: Left Arrow */}
             <button
               onClick={handlePrevMentor}
-              className="sm:hidden text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+              className="sm:hidden text-white hover:bg-white/30 active:bg-white/40 p-2 rounded-lg transition-colors flex items-center gap-1"
               title="Previous mentor"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-6 h-6" />
             </button>
 
             {/* Mentor Name */}
@@ -166,10 +166,10 @@ export default function AgentPage() {
             {/* Mobile: Right Arrow */}
             <button
               onClick={handleNextMentor}
-              className="sm:hidden text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+              className="sm:hidden text-white hover:bg-white/30 active:bg-white/40 p-2 rounded-lg transition-colors flex items-center gap-1"
               title="Next mentor"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-6 h-6" />
             </button>
           </div>
 
