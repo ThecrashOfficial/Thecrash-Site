@@ -1,17 +1,9 @@
 "use client"
 
 import { Navigation } from "@/components/navigation"
-import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
-import Image from "next/image"
 import { useState } from "react"
-
-const ArrowRightIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-  </svg>
-)
+import BlogCard from "@/components/blog-card"
 
 const posts = [
   {
@@ -123,50 +115,19 @@ export default function BlogPage() {
             </div>
           </div>
 
-          {/* Blog Posts Grid */}
-          <div className="space-y-6 animate-slide-up" style={{ animationDelay: "200ms" }}>
+          {/* Blog Posts Grid - Responsive Vertical Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-slide-up" style={{ animationDelay: "200ms" }}>
             {filteredPosts.map((post, index) => (
-              <Link key={post.id} href={`/blog/${post.slug}`}>
-                <Card className="overflow-hidden border-border bg-card group transition-all duration-300 hover:shadow-lg hover:border-primary/50 hover:scale-[1.01] cursor-pointer" style={{ animationDelay: `${250 + index * 75}ms` }}>
-                  <div className="grid md:grid-cols-3 gap-0">
-                    {/* Image Section */}
-                    <div className="relative aspect-video md:aspect-auto overflow-hidden bg-muted">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                    </div>
-
-                    {/* Content Section */}
-                    <div className="p-6 md:col-span-2 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center gap-2 mb-3 flex-wrap">
-                          <Badge variant="secondary" className="text-xs">
-                            {post.category}
-                          </Badge>
-                          <span className="text-xs text-muted-foreground">•</span>
-                          <span className="text-xs text-muted-foreground">{post.readTime}</span>
-                        </div>
-
-                        <h2 className="text-xl lg:text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors mb-3 line-clamp-2">
-                          {post.title}
-                        </h2>
-
-                        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">{post.excerpt}</p>
-                      </div>
-
-                      <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/50">
-                        <span className="text-xs text-muted-foreground">{post.date}</span>
-                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                          <ArrowRightIcon />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </Link>
+              <BlogCard
+                key={post.id}
+                image={post.image}
+                title={post.title}
+                excerpt={post.excerpt}
+                category={post.category}
+                date={post.date}
+                readTime={post.readTime}
+                slug={post.slug}
+              />
             ))}
           </div>
 
