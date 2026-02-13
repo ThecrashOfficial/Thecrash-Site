@@ -305,7 +305,10 @@ export default function MarketPage() {
             </button>
           )}
         </div>
-      </div>
+      </main>
+    </div>
+  )
+}
     </Card>
   )
 
