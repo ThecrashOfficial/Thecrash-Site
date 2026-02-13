@@ -29,6 +29,22 @@ export default function AgentPage() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight" && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault()
+        handleNextMentor()
+      } else if (e.key === "ArrowLeft" && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault()
+        handlePrevMentor()
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
+
   const handleMentorChange = (index: number) => {
     setSelectedMentorIndex(index)
     setMessages([])
@@ -88,9 +104,27 @@ export default function AgentPage() {
         <div
           className={`hidden sm:flex sm:w-64 bg-card border-r border-border flex-col z-40`}
         >
-          {/* Sidebar Header */}
+          {/* Sidebar Header with Arrow Navigation */}
           <div className="p-4 border-b border-border">
-            <h2 className="font-bold text-sm text-foreground">AI Mentors</h2>
+            <div className="flex items-center justify-between gap-2">
+              <h2 className="font-bold text-sm text-foreground">AI Mentors</h2>
+              <div className="flex gap-1">
+                <button
+                  onClick={handlePrevMentor}
+                  className="text-muted-foreground hover:text-foreground hover:bg-muted p-1 rounded transition-colors"
+                  title="Previous mentor (← Arrow)"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={handleNextMentor}
+                  className="text-muted-foreground hover:text-foreground hover:bg-muted p-1 rounded transition-colors"
+                  title="Next mentor (→ Arrow)"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Mentors List */}
@@ -119,6 +153,7 @@ export default function AgentPage() {
             <button
               onClick={handlePrevMentor}
               className="sm:hidden text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+              title="Previous mentor"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -132,6 +167,7 @@ export default function AgentPage() {
             <button
               onClick={handleNextMentor}
               className="sm:hidden text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+              title="Next mentor"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
