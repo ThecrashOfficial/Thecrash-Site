@@ -1,15 +1,18 @@
 "use client"
 
 import { Navigation } from "@/components/navigation"
+import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Send, User, ChevronLeft, ChevronRight } from "lucide-react"
+import { Send, User, Menu, X, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
-import { promptTemplates, type PromptTemplate } from "@/lib/promptTemplates"
 
-const mentorTemplates: { name: PromptTemplate; color: string; accentBg: string }[] = [
-  { name: "Learning Style Analyzer", color: "from-blue-500 to-blue-600", accentBg: "bg-blue-500/10" },
-  { name: "Content Creator Mentor", color: "from-purple-500 to-purple-600", accentBg: "bg-purple-500/10" },
-  { name: "Python Educator", color: "from-emerald-500 to-emerald-600", accentBg: "bg-emerald-500/10" },
+const mentors = [
+  { name: "Thecrash", color: "from-blue-500 to-blue-600", accentBg: "bg-blue-500/10" },
+  { name: "Life Coach", color: "from-purple-500 to-purple-600", accentBg: "bg-purple-500/10" },
+  { name: "Financial Coach", color: "from-emerald-500 to-emerald-600", accentBg: "bg-emerald-500/10" },
+  { name: "Philosopher", color: "from-amber-500 to-amber-600", accentBg: "bg-amber-500/10" },
+  { name: "Learning Coach", color: "from-cyan-500 to-cyan-600", accentBg: "bg-cyan-500/10" },
+  { name: "Meta Coach", color: "from-pink-500 to-pink-600", accentBg: "bg-pink-500/10" },
 ]
 
 export default function AgentPage() {
@@ -17,10 +20,10 @@ export default function AgentPage() {
   const [input, setInput] = useState("")
   const [selectedMentorIndex, setSelectedMentorIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  const selectedTemplate = mentorTemplates[selectedMentorIndex]
-  const selectedPrompt = promptTemplates[selectedTemplate.name]
+  const selectedMentor = mentors[selectedMentorIndex]
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -29,6 +32,7 @@ export default function AgentPage() {
   const handleMentorChange = (index: number) => {
     setSelectedMentorIndex(index)
     setMessages([])
+    setSidebarOpen(false)
   }
 
   const handleNextMentor = () => {
@@ -71,8 +75,7 @@ export default function AgentPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: [...messages, userMessage],
-          systemPrompt: selectedPrompt.system,
-          templateName: selectedTemplate.name,
+          mentor: selectedMentor.name,
         }),
       })
 
@@ -126,17 +129,17 @@ export default function AgentPage() {
 
           {/* Mentors List */}
           <div className="flex-1 overflow-y-auto p-2 space-y-1">
-            {mentorTemplates.map((template, idx) => (
+            {mentors.map((mentor, idx) => (
               <button
-                key={template.name}
+                key={mentor.name}
                 onClick={() => handleMentorChange(idx)}
                 className={`w-full text-left px-3 py-2 rounded-lg transition-all text-sm font-medium ${
                   selectedMentorIndex === idx
-                    ? `bg-gradient-to-r ${template.color} text-white shadow-md`
+                    ? `bg-gradient-to-r ${mentor.color} text-white shadow-md`
                     : "text-foreground hover:bg-muted"
                 }`}
               >
-                {template.name}
+                {mentor.name}
               </button>
             ))}
           </div>
