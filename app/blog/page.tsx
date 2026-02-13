@@ -89,23 +89,23 @@ export default function BlogPage() {
           </div>
 
           {/* Blog Posts List */}
-          <div className="space-y-4 animate-slide-up" style={{ animationDelay: "100ms" }}>
+          <div className="space-y-6 animate-slide-up" style={{ animationDelay: "100ms" }}>
             {posts.map((post, index) => (
               <Link key={post.id} href={`/blog/${post.slug}`}>
                 <div
-                  className="group border border-border/50 rounded-lg p-5 transition-all duration-300 hover:border-primary/50 hover:bg-card/30 hover:shadow-md cursor-pointer"
+                  className="group border border-border/40 rounded-xl p-6 transition-all duration-300 hover:border-primary/50 hover:bg-card/50 hover:shadow-lg hover:-translate-y-1 cursor-pointer bg-card/20 backdrop-blur-sm shadow-sm"
                   style={{ animationDelay: `${150 + index * 50}ms` }}
                 >
                   <div className="flex items-start justify-between gap-4">
                     {/* Content */}
                     <div className="flex-1 min-w-0">
                       {/* Title */}
-                      <h2 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
+                      <h2 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-3 line-clamp-2">
                         {post.title}
                       </h2>
 
                       {/* Excerpt */}
-                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2 leading-relaxed">
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
                         {post.excerpt}
                       </p>
 
@@ -122,7 +122,7 @@ export default function BlogPage() {
                     </div>
 
                     {/* Arrow */}
-                    <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors mt-1">
+                    <div className="w-9 h-9 rounded-full bg-muted/50 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 group-hover:scale-110 transition-all mt-1">
                       <ArrowRightIcon />
                     </div>
                   </div>
