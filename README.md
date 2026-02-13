@@ -61,7 +61,7 @@ Thecrash is a modern, full-stack personal workspace platform designed for creato
 
 ### Installation
 
-```bash
+\`\`\`bash
 # Clone the repository
 git clone https://github.com/Thecrash/thecrash-site.git
 cd thecrash-site
@@ -73,11 +73,11 @@ npm install
 npm run dev
 
 # Open http://localhost:3000
-```
+\`\`\`
 
 ## Project Structure
 
-```
+\`\`\`
 thecrash-site/
 ├── app/
 │   ├── page.tsx              # Homepage
@@ -93,7 +93,7 @@ thecrash-site/
 │   └── [other components]
 ├── public/                   # Static assets & logos
 └── styles/                   # Global CSS
-```
+\`\`\`
 
 ## Key Pages
 

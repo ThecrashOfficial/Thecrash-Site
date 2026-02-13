@@ -3,7 +3,7 @@
 import { Navigation } from "@/components/navigation"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Send, User } from "lucide-react"
+import { Send, User, Menu, X } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 
 const mentors = [
@@ -20,6 +20,7 @@ export default function AgentPage() {
   const [input, setInput] = useState("")
   const [selectedMentor, setSelectedMentor] = useState(mentors[0])
   const [isLoading, setIsLoading] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function AgentPage() {
   const handleMentorChange = (mentor: typeof mentors[0]) => {
     setSelectedMentor(mentor)
     setMessages([])
+    setSidebarOpen(false)
   }
 
   const handleSend = async () => {
@@ -69,105 +71,134 @@ export default function AgentPage() {
     <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
       
-      <main className="flex-1 flex flex-col pt-4 pb-4 px-3 sm:px-6">
-        <div className="w-full max-w-3xl mx-auto flex flex-col h-full space-y-3">
-          
-          {/* Header */}
-          <div className="text-center mb-2">
-            <h1 className="text-2xl sm:text-3xl font-bold text-foreground">AI Mentors</h1>
+      <main className="flex-1 flex overflow-hidden">
+        {/* Sidebar */}
+        <div
+          className={`fixed sm:static inset-y-0 left-0 w-64 bg-card border-r border-border transform transition-transform duration-300 ease-in-out flex flex-col z-40 ${
+            sidebarOpen ? "translate-x-0" : "-translate-x-full sm:translate-x-0"
+          }`}
+        >
+          {/* Sidebar Header */}
+          <div className="p-4 border-b border-border">
+            <div className="flex items-center justify-between">
+              <h2 className="font-bold text-sm text-foreground">AI Mentors</h2>
+              <button
+                onClick={() => setSidebarOpen(false)}
+                className="sm:hidden text-muted-foreground hover:text-foreground"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
-          {/* Mentor Buttons - Horizontal Scroll */}
-          <div className="flex gap-2 overflow-x-auto pb-2 -mx-3 px-3 sm:mx-0 sm:px-0 sm:flex-wrap sm:gap-2">
+          {/* Mentors List */}
+          <div className="flex-1 overflow-y-auto p-2 space-y-1">
             {mentors.map((mentor) => (
               <button
                 key={mentor.name}
                 onClick={() => handleMentorChange(mentor)}
-                className={`flex-shrink-0 px-3 py-2 sm:px-4 sm:py-2 rounded-lg transition-all text-xs sm:text-sm font-medium whitespace-nowrap ${
+                className={`w-full text-left px-3 py-2 rounded-lg transition-all text-sm font-medium ${
                   selectedMentor.name === mentor.name
                     ? `bg-gradient-to-r ${mentor.color} text-white shadow-md`
-                    : "bg-card border border-border hover:border-foreground/30"
+                    : "text-foreground hover:bg-muted"
                 }`}
               >
                 {mentor.name}
               </button>
             ))}
           </div>
+        </div>
 
-          {/* Chat Container */}
-          <div className="flex-1 flex flex-col bg-card border border-border rounded-xl overflow-hidden shadow-lg min-h-0">
-            
-            {/* Chat Header */}
-            <div className={`px-3 py-2 sm:px-4 sm:py-3 bg-gradient-to-r ${selectedMentor.color} text-white`}>
-              <p className="font-semibold text-sm">{selectedMentor.name}</p>
+        {/* Overlay for mobile */}
+        {sidebarOpen && (
+          <div
+            className="sm:hidden fixed inset-0 bg-black/50 z-30"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
+        {/* Main Chat Area */}
+        <div className="flex-1 flex flex-col relative">
+          {/* Chat Header */}
+          <div className={`px-4 py-3 bg-gradient-to-r ${selectedMentor.color} text-white flex items-center justify-between`}>
+            <div>
+              <p className="font-semibold text-sm sm:text-base">{selectedMentor.name}</p>
             </div>
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="sm:hidden text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
 
-            {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-2 sm:space-y-3">
-              {isEmpty ? (
-                <div className="h-full flex flex-col items-center justify-center text-center space-y-3">
-                  <div className={`w-10 h-10 rounded-full ${selectedMentor.accentBg}`} />
-                  <p className="text-sm text-muted-foreground">Start chatting with {selectedMentor.name}</p>
+          {/* Messages Area */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 flex flex-col">
+            {isEmpty ? (
+              <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
+                <div className={`w-16 h-16 rounded-full ${selectedMentor.accentBg}`} />
+                <div>
+                  <p className="font-semibold text-foreground">Start chatting with {selectedMentor.name}</p>
+                  <p className="text-sm text-muted-foreground mt-1">Ask anything and get instant guidance</p>
                 </div>
-              ) : (
-                <>
-                  {messages.map((msg, idx) => (
-                    <div key={idx} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                      {msg.role === "assistant" && (
-                        <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full ${selectedMentor.accentBg} flex-shrink-0 mt-1`} />
-                      )}
-                      <div
-                        className={`max-w-xs sm:max-w-md rounded-lg px-3 py-2 text-xs sm:text-sm break-words ${
-                          msg.role === "user"
-                            ? `bg-gradient-to-r ${selectedMentor.color} text-white`
-                            : "bg-muted text-foreground border border-border"
-                        }`}
-                      >
-                        {msg.content}
-                      </div>
-                      {msg.role === "user" && (
-                        <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-secondary/30 flex-shrink-0 mt-1 flex items-center justify-center">
-                          <User className="w-3 h-3 sm:w-4 sm:h-4" />
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                  {isLoading && (
-                    <div className="flex gap-2">
-                      <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full ${selectedMentor.accentBg} flex-shrink-0 mt-1`} />
-                      <div className="flex gap-1 items-center">
-                        <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground animate-bounce" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground animate-bounce" style={{ animationDelay: "150ms" }} />
-                        <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground animate-bounce" style={{ animationDelay: "300ms" }} />
-                      </div>
-                    </div>
-                  )}
-                </>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
-
-            {/* Input Area */}
-            <div className="px-3 py-2 sm:px-4 sm:py-3 border-t border-border bg-card">
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
-                  placeholder="Message..."
-                  disabled={isLoading}
-                  className="flex-1 px-3 py-2 rounded-lg bg-muted text-foreground placeholder:text-muted-foreground focus:outline-none border border-border disabled:opacity-50 text-sm"
-                />
-                <Button
-                  onClick={handleSend}
-                  size="sm"
-                  className={`bg-gradient-to-r ${selectedMentor.color} text-white disabled:opacity-50 px-3 sm:px-4`}
-                  disabled={isLoading}
-                >
-                  <Send className="w-4 h-4" />
-                </Button>
               </div>
+            ) : (
+              <>
+                {messages.map((msg, idx) => (
+                  <div key={idx} className={`flex gap-3 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                    {msg.role === "assistant" && (
+                      <div className={`w-8 h-8 rounded-full ${selectedMentor.accentBg} flex-shrink-0 flex items-center justify-center mt-1`} />
+                    )}
+                    <div
+                      className={`max-w-sm lg:max-w-md rounded-lg px-4 py-2 text-sm break-words ${
+                        msg.role === "user"
+                          ? `bg-gradient-to-r ${selectedMentor.color} text-white`
+                          : "bg-muted text-foreground border border-border"
+                      }`}
+                    >
+                      {msg.content}
+                    </div>
+                    {msg.role === "user" && (
+                      <div className="w-8 h-8 rounded-full bg-secondary/30 flex-shrink-0 flex items-center justify-center mt-1">
+                        <User className="w-4 h-4" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+                {isLoading && (
+                  <div className="flex gap-3">
+                    <div className={`w-8 h-8 rounded-full ${selectedMentor.accentBg} flex-shrink-0 mt-1`} />
+                    <div className="flex gap-1 items-center bg-muted rounded-lg px-4 py-3">
+                      <div className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce" />
+                      <div className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce" style={{ animationDelay: "150ms" }} />
+                      <div className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce" style={{ animationDelay: "300ms" }} />
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Input Area */}
+          <div className="px-4 py-3 border-t border-border bg-card">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
+                placeholder="Message..."
+                disabled={isLoading}
+                className="flex-1 px-4 py-2 rounded-lg bg-muted text-foreground placeholder:text-muted-foreground focus:outline-none border border-border disabled:opacity-50 text-sm"
+              />
+              <Button
+                onClick={handleSend}
+                className={`bg-gradient-to-r ${selectedMentor.color} text-white disabled:opacity-50 px-4`}
+                disabled={isLoading}
+              >
+                <Send className="w-4 h-4" />
+              </Button>
             </div>
           </div>
         </div>
